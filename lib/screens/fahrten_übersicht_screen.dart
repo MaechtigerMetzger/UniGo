@@ -6,7 +6,7 @@ import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
 
 class FahrtUebersicht extends StatelessWidget {
   const FahrtUebersicht({Key? key}) : super(key: key);
-
+   
   @override
   Widget build(BuildContext context) {
     return Scaffold(

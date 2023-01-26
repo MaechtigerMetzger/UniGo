@@ -4,8 +4,8 @@ import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
 
-class FahrtHinzufuegenScreen extends StatelessWidget {
-  const FahrtHinzufuegenScreen({Key? key}) : super(key: key);
+class FahrtHinzufuegenScreenI extends StatelessWidget {
+  const FahrtHinzufuegenScreenI({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
