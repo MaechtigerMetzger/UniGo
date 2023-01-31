@@ -12,6 +12,7 @@ import 'fahrt_suche_screen.dart';
 import 'fahrten_übersicht_screen.dart';
 
 import 'package:unigo_prototyp/screens/Divers/email_screen.dart';
+import 'package:unigo_prototyp/screens/Divers/faq_screen.dart';
 
 class AuswahlScreen extends StatelessWidget {
   const AuswahlScreen({Key? key}) : super(key: key);
@@ -42,6 +43,8 @@ class AuswahlScreen extends StatelessWidget {
           _buildRouteButton(context, "Fahrt Übersicht", FahrtUebersicht()),
           _spacer(),
           _buildRouteButton(context, "Emails", EmailScreen()),
+          _spacer(),
+          _buildRouteButton(context, "FAQ", FaqScreen()),
         ],
       ),
     ));
