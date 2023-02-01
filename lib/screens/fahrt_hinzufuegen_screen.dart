@@ -76,7 +76,7 @@ class FahrtHinzufuegenScreenI extends StatelessWidget {
                 ),
                 height: 30,
                 width: 250,
-                padding: const EdgeInsets.all(0),
+                padding: const EdgeInsets.all(2),
                 child: Text(
                   'Deine Angaben:',
                   style: TextStyle(fontSize: 20),
@@ -90,7 +90,7 @@ class FahrtHinzufuegenScreenI extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               color: Colors.white,
             ),
-            height: 89,
+            height: 90,
             width: 400,
             padding: const EdgeInsets.all(5),
             child: Column(
@@ -100,87 +100,83 @@ class FahrtHinzufuegenScreenI extends StatelessWidget {
                   style: TextStyle(fontSize: 12),
                   textAlign: TextAlign.left,
                 ),
-                Row(
-                  children: [
-                    Container(
-                      width: 80,
-                      height: 25,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.teal,
-                      ),
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 5.0, vertical: 5),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Musik',
-                            style: TextStyle(fontSize: 12),
-                            textAlign: TextAlign.center,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  child: Center(
+                    child: Row(
+                      children: [
+                        TextButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            foregroundColor:
+                                MaterialStateProperty.all(Colors.black),
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.teal),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              side: BorderSide(color: Colors.teal),
+                            )),
                           ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 90,
-                      height: 25,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.teal,
-                      ),
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 5.0, vertical: 20),
-                      child: Column(
-                        children: [
-                          Text(
-                            'E-Auto',
-                            style: TextStyle(fontSize: 12),
-                            textAlign: TextAlign.center,
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 80,
-                      height: 25,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.teal,
-                      ),
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 5.0, vertical: 5),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Tier',
-                            style: TextStyle(fontSize: 12),
-                            textAlign: TextAlign.center,
+                          child: Text('Musik'),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                              foregroundColor:
+                                  MaterialStateProperty.all(Colors.black),
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.teal),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                side: BorderSide(color: Colors.teal),
+                              )),
+                            ),
+                            child: Text('E-Auto'),
                           ),
-                        ],
-                      ),
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            foregroundColor:
+                                MaterialStateProperty.all(Colors.black),
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.teal),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              side: BorderSide(color: Colors.teal),
+                            )),
+                          ),
+                          child: Text('Tiere'),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                              foregroundColor:
+                                  MaterialStateProperty.all(Colors.black),
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.teal),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                side: BorderSide(color: Colors.teal),
+                              )),
+                            ),
+                            child: Text('Musik'),
+                          ),
+                        ),
+                      ],
                     ),
-                    Container(
-                      width: 90,
-                      height: 25,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.teal,
-                      ),
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 5.0, vertical: 5),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Musik',
-                            style: TextStyle(fontSize: 12),
-                            textAlign: TextAlign.center,
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-                Container(),
               ],
             ),
           ),
@@ -189,7 +185,7 @@ class FahrtHinzufuegenScreenI extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               color: Colors.white,
             ),
-            height: 89,
+            height: 90,
             width: 400,
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(5),
@@ -200,58 +196,58 @@ class FahrtHinzufuegenScreenI extends StatelessWidget {
                   style: TextStyle(fontSize: 12),
                   textAlign: TextAlign.left,
                 ),
-                Row(
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 25,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.teal,
-                      ),
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 5.0,
-                      ),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 5,
-                          ),
-                          TextField(
-                            textAlign: TextAlign.center,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                                borderSide: BorderSide(color: Colors.teal),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.teal,
+                        ),
+                        margin: const EdgeInsets.symmetric(
+                          vertical: 10.0,
+                        ),
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              textAlign: TextAlign.center,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderSide: BorderSide(color: Colors.teal),
+                                ),
+                                hintText: 'Fahrzeug...',
+                                isDense: true, // Added this
+                                contentPadding:
+                                    EdgeInsets.symmetric(vertical: 8),
                               ),
-                              hintText: 'Fahrzeug...',
-                              isDense: true, // Added this
-                              contentPadding: EdgeInsets.all(0), // Added this
                             ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            foregroundColor:
+                                MaterialStateProperty.all(Colors.black),
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.teal),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              side: BorderSide(color: Colors.teal),
+                            )),
                           ),
-                        ],
+                          child: Text('Autosymbol'),
+                        ),
                       ),
-                    ),
-                    Container(
-                      width: 90,
-                      height: 25,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.teal,
-                      ),
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 5.0, vertical: 20),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Auto Symbol',
-                            style: TextStyle(fontSize: 12),
-                            textAlign: TextAlign.center,
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 Container(),
               ],
@@ -267,7 +263,7 @@ class FahrtHinzufuegenScreenI extends StatelessWidget {
     return Container(
       width: 250,
       height: 50,
-      margin: const EdgeInsets.all(20.0),
+      margin: const EdgeInsets.all(10.0),
       child: TextButton(
         onPressed: () {},
         style: ButtonStyle(
@@ -295,38 +291,50 @@ class FahrtHinzufuegenScreenI extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: const [
+          children: [
             SizedBox(
               height: 5,
             ),
-            TextField(
+            TextFormField(
+              textAlign: TextAlign.center,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Start...',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.teal),
+                ),
+                hintText: 'Start...',
                 isDense: true, // Added this
-                contentPadding: EdgeInsets.all(10), // Added this
+                contentPadding: EdgeInsets.all(15),
               ),
             ),
             SizedBox(
               height: 5,
             ),
-            TextField(
+            TextFormField(
+              textAlign: TextAlign.center,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Ziel...',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.teal),
+                ),
+                hintText: 'Ziel...',
                 isDense: true, // Added this
-                contentPadding: EdgeInsets.all(10), // Added this
+                contentPadding: EdgeInsets.all(15),
               ),
             ),
             SizedBox(
               height: 5,
             ),
-            TextField(
+            TextFormField(
+              textAlign: TextAlign.center,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Freieplätze...',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.teal),
+                ),
+                hintText: 'Freieplätze...',
                 isDense: true, // Added this
-                contentPadding: EdgeInsets.all(10), // Added this
+                contentPadding: EdgeInsets.all(15),
               ),
             ),
           ],

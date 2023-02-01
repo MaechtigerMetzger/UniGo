@@ -4,6 +4,8 @@ import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
 
+import 'fahrten_übersicht_screen.dart';
+
 class FahrtSuchen extends StatelessWidget {
   const FahrtSuchen({Key? key}) : super(key: key);
 
@@ -46,17 +48,19 @@ class FahrtSuchen extends StatelessWidget {
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            //Platzhalter Karte
-            _buildMap(),
-            // Text Feld für Start... und Ziel...
-            _buildStartEnd(),
-            //Button für Vorgefertigte Ort, Datum, Zeit
-            _buildDefaultValue(),
-            //Button zum Senden
-            _buildSende(),
-          ],
+        child: Form(
+          child: Column(
+            children: <Widget>[
+              //Platzhalter Karte
+              _buildMap(),
+              // Text Feld für Start... und Ziel...
+              _buildStartEnd(),
+              //Button für Vorgefertigte Ort, Datum, Zeit
+              _buildDefaultValue(),
+              //Button zum Senden
+              _buildSende(),
+            ],
+          ),
         ),
       ),
     );
@@ -68,18 +72,19 @@ class FahrtSuchen extends StatelessWidget {
       width: 250,
       height: 50,
       margin: const EdgeInsets.all(40.0),
-      child: TextButton(
-        onPressed: () {},
+      child: ElevatedButton(
+        child: const Text('Suchen', style: TextStyle(fontSize: 20)),
+        onPressed: () {
+        },
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all(Colors.white),
           backgroundColor: MaterialStateProperty.all(Colors.teal),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: BorderSide(color: Colors.teal),
-          )),
+                borderRadius: BorderRadius.circular(10),
+                side: BorderSide(color: Colors.teal),
+              )),
         ),
-        child: Text('Suchen', style: TextStyle(fontSize: 20)),
       ),
     );
   }
@@ -95,27 +100,35 @@ class FahrtSuchen extends StatelessWidget {
         padding: const EdgeInsets.all(2.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: const [
+          children: [
             SizedBox(
               height: 10,
             ),
-            TextField(
+            TextFormField(
+              textAlign: TextAlign.center,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.teal),
+                ),
                 hintText: 'Start...',
                 isDense: true, // Added this
-                contentPadding: EdgeInsets.all(15), // Added this
+                contentPadding: EdgeInsets.all(15),
               ),
             ),
             SizedBox(
               height: 10,
             ),
-            TextField(
+            TextFormField(
+              textAlign: TextAlign.center,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.teal),
+                ),
                 hintText: 'Ziel...',
                 isDense: true, // Added this
-                contentPadding: EdgeInsets.all(15), // Added this
+                contentPadding: EdgeInsets.all(15),
               ),
             ),
           ],
@@ -159,9 +172,9 @@ class FahrtSuchen extends StatelessWidget {
                 backgroundColor: MaterialStateProperty.all(Colors.grey),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(color: Colors.grey),
-                )),
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(color: Colors.grey),
+                    )),
               ),
               child: Text('Ort'),
             ),
@@ -175,9 +188,9 @@ class FahrtSuchen extends StatelessWidget {
                 backgroundColor: MaterialStateProperty.all(Colors.grey),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(color: Colors.grey),
-                )),
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(color: Colors.grey),
+                    )),
               ),
               child: Text('Datum'),
             ),
@@ -191,9 +204,9 @@ class FahrtSuchen extends StatelessWidget {
                 backgroundColor: MaterialStateProperty.all(Colors.grey),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(color: Colors.grey),
-                )),
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(color: Colors.grey),
+                    )),
               ),
               child: Text('Zeit'),
             ),
@@ -203,3 +216,4 @@ class FahrtSuchen extends StatelessWidget {
     );
   }
 }
+
