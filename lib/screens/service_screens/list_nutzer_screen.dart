@@ -34,7 +34,7 @@ class _ListNutzerScreenState extends State<ListNutzerScreen> {
               nachname: "Potter",
               passwort: "Expecto patronum",
               geburtsdatum: "1.1.2000",
-              hasprofile: 1,
+              hasprofile: [],
               email: "h.p@ligusterweg.hex",
             );
 

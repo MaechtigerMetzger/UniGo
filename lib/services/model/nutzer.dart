@@ -31,7 +31,7 @@ class Nutzer {
   String passwort;
   String email;
   String geburtsdatum;
-  int hasprofile;
+  List<int> hasprofile;
 
   factory Nutzer.fromJson(Map<String, dynamic> json) => Nutzer(
         id: json["id"],
@@ -40,7 +40,7 @@ class Nutzer {
         passwort: json["passwort"],
         email: json["email"],
         geburtsdatum: json["geburtsdatum"],
-        hasprofile: json["hasprofile"],
+        hasprofile: List<int>.from(json["hasprofile"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
@@ -50,6 +50,6 @@ class Nutzer {
         "passwort": passwort,
         "email": email,
         "geburtsdatum": geburtsdatum,
-        "hasprofile": hasprofile,
+        "hasprofile": List<dynamic>.from(hasprofile.map((x) => x)),
       };
 }
