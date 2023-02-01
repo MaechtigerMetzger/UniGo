@@ -14,6 +14,7 @@ Nutzer nutzerFromJson(String str) => Nutzer.fromJson(json.decode(str));
 
 String nutzerToJson(Nutzer data) => json.encode(data.toJson());
 
+
 class Nutzer {
   Nutzer({
     required this.id,

@@ -25,23 +25,23 @@ class Chat {
 
   int id;
   String name;
-  int fahrer;
-  int mitfahrer;
+  List<int> fahrer;
+  List<int> mitfahrer;
   List<int> messages;
 
   factory Chat.fromJson(Map<String, dynamic> json) => Chat(
         id: json["id"],
         name: json["name"],
-        fahrer: json["fahrer"],
-        mitfahrer: json["mitfahrer"],
+        fahrer: List<int>.from(json["fahrer"].map((x) => x)),
+        mitfahrer: List<int>.from(json["mitfahrer"].map((x) => x)),
         messages: List<int>.from(json["messages"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
-        "fahrer": fahrer,
-        "mitfahrer": mitfahrer,
+        "fahrer": List<dynamic>.from(fahrer.map((x) => x)),
+        "mitfahrer": List<dynamic>.from(mitfahrer.map((x) => x)),
         "messages": List<dynamic>.from(messages.map((x) => x)),
       };
 }

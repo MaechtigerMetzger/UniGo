@@ -31,7 +31,7 @@ class Angebot {
   DateTime datum;
   String uhrzeit;
   int freiplaetze;
-  int hasprofile;
+  List<int> hasprofile;
 
   factory Angebot.fromJson(Map<String, dynamic> json) => Angebot(
         id: json["id"],
@@ -40,7 +40,7 @@ class Angebot {
         datum: DateTime.parse(json["datum"]),
         uhrzeit: json["uhrzeit"],
         freiplaetze: json["freiplaetze"],
-        hasprofile: json["hasprofile"],
+        hasprofile: List<int>.from(json["hasprofile"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
@@ -51,6 +51,6 @@ class Angebot {
             "${datum.year.toString().padLeft(4, '0')}-${datum.month.toString().padLeft(2, '0')}-${datum.day.toString().padLeft(2, '0')}",
         "uhrzeit": uhrzeit,
         "freiplaetze": freiplaetze,
-        "hasprofile": hasprofile,
+        "hasprofile": List<dynamic>.from(hasprofile.map((x) => x)),
       };
 }
