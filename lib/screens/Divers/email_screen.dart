@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 
 class EmailScreen extends StatelessWidget {
   const EmailScreen({Key? key}) : super(key: key);
@@ -11,21 +13,23 @@ class EmailScreen extends StatelessWidget {
         showUnselectedLabels: false,
         showSelectedLabels: false,
         backgroundColor: Colors.blueGrey,
+
         items: [
+
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: SvgPicture.asset('assets/icons/Bachelorprojekt_Icons_negativ_Home.svg', width: 30, color: Color.fromARGB(255, 223, 237, 237),),
             label: "",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.car_rental),
+            icon: SvgPicture.asset('assets/icons/Bachelorprojekt_Icons_negativ_Car.svg', width: 30, color: Color.fromARGB(255, 223, 237, 237),),
             label: "",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
+            icon: SvgPicture.asset('assets/icons/Bachelorprojekt_Icons_negativ_Chat.svg', width: 30, color: Color.fromARGB(255, 223, 237, 237),),
             label: "",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: SvgPicture.asset('assets/icons/Bachelorprojekt_Icons_negativ_Settings.svg', width: 30, color: Color.fromARGB(255, 223, 237, 237),),
             label: "",
           ),
 
@@ -76,27 +80,21 @@ class EmailScreen extends StatelessWidget {
 
   Container _buildBox(String text) {
     return Container(
-        child: Center(
-            child: Container(
-              width: 350,
-              height: 100,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Color.fromARGB(255, 219, 237, 236),
-              ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Color.fromARGB(255, 219, 237, 236),
+        ),
+        width: 350,
+        height: 100,
 
-              child: Center(
-                child: Text(
-                "Mustermail",
-                style: TextStyle(
-
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              ),
-            )
-        )
+      child: Row(
+        children: [
+        Container(
+        alignment: Alignment.topLeft,
+        child: Text('Email'),
+      ),
+       ]
+    ),
     );
   }
 
