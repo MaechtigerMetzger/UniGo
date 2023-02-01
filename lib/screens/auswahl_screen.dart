@@ -59,6 +59,7 @@ class AuswahlScreen extends StatelessWidget {
       BuildContext context, String text, Widget widget) {
     return ElevatedButton(
       onPressed: () {
+        Navigator.pop(context);
         Navigator.push(
             context,
             MaterialPageRoute(
