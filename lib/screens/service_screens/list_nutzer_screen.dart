@@ -41,7 +41,7 @@ class _ListNutzerScreenState extends State<ListNutzerScreen> {
             bool result = await UGBackendServiceProvider.createObject<Nutzer>(
               data: nutzer,
               toJson: nutzerToJson,
-              resourcePath: "nutzer/",
+              resourcePath: "nutzer.json",
             );
 
             setState(() {
@@ -127,14 +127,11 @@ class _ListNutzerScreenState extends State<ListNutzerScreen> {
     return Container(
       height: 200,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(20),
-            bottomLeft: Radius.circular(20),
-          ),
-          image: DecorationImage(
-            image: AssetImage("assets/usr_list_header.png"),
-            fit: BoxFit.cover,
-          )),
+        borderRadius: BorderRadius.only(
+          bottomRight: Radius.circular(20),
+          bottomLeft: Radius.circular(20),
+        ),
+      ),
     );
   }
 
