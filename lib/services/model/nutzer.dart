@@ -14,7 +14,6 @@ Nutzer nutzerFromJson(String str) => Nutzer.fromJson(json.decode(str));
 
 String nutzerToJson(Nutzer data) => json.encode(data.toJson());
 
-
 class Nutzer {
   Nutzer({
     required this.id,
@@ -24,6 +23,16 @@ class Nutzer {
     required this.email,
     required this.geburtsdatum,
     required this.hasprofile,
+  });
+
+  Nutzer.empty({
+    this.id = 0,
+    this.vorname = "empty",
+    this.nachname = "user",
+    this.passwort = "",
+    this.email = "",
+    this.geburtsdatum = "",
+    this.hasprofile = const [],
   });
 
   int id;

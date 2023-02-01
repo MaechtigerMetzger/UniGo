@@ -24,4 +24,13 @@ class UniGoService {
 
     return result[0];
   }
+
+  Future<bool> deleteNutzerById({required int id}) async {
+    var result = await UGBackendServiceProvider.deleteObjectById(
+      id: id,
+      resourcePath: "nutzer",
+    );
+    return result;
+  }
+
 }

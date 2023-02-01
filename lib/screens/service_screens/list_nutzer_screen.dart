@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unigo_prototyp/screens/service_screens/edit_nutzer_screen.dart';
 import 'package:unigo_prototyp/services/ugbackend_service_provider.dart';
 import 'package:unigo_prototyp/services/unigo_service.dart';
 
@@ -74,14 +75,7 @@ class _ListNutzerScreenState extends State<ListNutzerScreen> {
               ),
               Row(
                 children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        users = [];
-                      });
-                    },
-                    child: Text("clear"),
-                  ),
+                  _buildClearButton(),
                   ElevatedButton(
                     onPressed: () async {
                       Nutzer nutzer = await service.getNutzerById(id: 101);
@@ -123,10 +117,22 @@ class _ListNutzerScreenState extends State<ListNutzerScreen> {
     );
   }
 
+  ElevatedButton _buildClearButton() {
+    return ElevatedButton(
+      onPressed: () {
+        setState(() {
+          users = [];
+        });
+      },
+      child: Text("clear"),
+    );
+  }
+
   Widget _buildHeader() {
     return Container(
-      height: 200,
+      height: 70,
       decoration: BoxDecoration(
+        color: Colors.grey,
         borderRadius: BorderRadius.only(
           bottomRight: Radius.circular(20),
           bottomLeft: Radius.circular(20),
@@ -175,9 +181,32 @@ class _ListNutzerScreenState extends State<ListNutzerScreen> {
             height: 70,
             child: Align(
               alignment: Alignment.centerRight,
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.edit),
+              child: Container(
+                width: 80,
+                child: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () async {
+                        bool result =
+                            await service.deleteNutzerById(id: nutzer.id);
+                        print(nutzer.id);
+                        setState(() {});
+                      },
+                      icon: Icon(Icons.delete_outline_outlined),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                EditNutzerScreen(id: nutzer.id),
+                          ),
+                        );
+                      },
+                      icon: Icon(Icons.edit),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
