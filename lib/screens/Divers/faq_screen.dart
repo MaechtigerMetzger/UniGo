@@ -73,29 +73,45 @@ class FaqScreen extends StatelessWidget {
     );
   }
 
+
   Container _buildBox(String text) {
     return Container(
-        child: Center(
-            child: Container(
-              width: 350,
-              height: 100,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Color.fromARGB(255, 219, 237, 236),
-              ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Color.fromARGB(255, 219, 237, 236),
+        ),
+        height: 100,
+        width: 350,
 
-              child: Center(
+            child: Row(
+            children: [
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.symmetric(horizontal: 35, vertical:0),
                 child: Text(
-                  "Frage",
+                  "?",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    fontSize: 30,
                   ),
                 ),
               ),
-            )
+              Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.symmetric(horizontal: 55, vertical:0),
+                    margin: EdgeInsets.all(0),
+                    child:  Text(
+                      "Frage",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                      ),
+                    ),
+                  ),
+            ]
         )
-    );
+        );
+
   }
 
 
