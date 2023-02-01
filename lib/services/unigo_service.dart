@@ -8,7 +8,7 @@ class UniGoService {
 
   Future<List<Nutzer>> getNutzerList() async {
     return await UGBackendServiceProvider.getObjectList<Nutzer>(
-        resourcePath: "nutzer.json", parseBody: nutzerListFromJson);
+        resourcePath: "nutzer", parseBody: nutzerListFromJson);
   }
 
   Future<Nutzer> getNutzerById({required int id}) async {

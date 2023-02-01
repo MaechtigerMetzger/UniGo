@@ -25,19 +25,19 @@ class Nachricht {
   int id;
   String inhalt;
   DateTime datumZeit;
-  int inchat;
+  List<int> inchat;
 
   factory Nachricht.fromJson(Map<String, dynamic> json) => Nachricht(
         id: json["id"],
         inhalt: json["inhalt"],
         datumZeit: DateTime.parse(json["datum_zeit"]),
-        inchat: json["inchat"],
+        inchat: List<int>.from(json["inchat"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "inhalt": inhalt,
         "datum_zeit": datumZeit.toIso8601String(),
-        "inchat": inchat,
+        "inchat": List<dynamic>.from(inchat.map((x) => x)),
       };
 }

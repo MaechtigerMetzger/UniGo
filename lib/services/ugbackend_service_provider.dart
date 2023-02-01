@@ -12,7 +12,7 @@ class UGBackendServiceProvider {
     required String resourcePath,
     required Function(String) parseBody,
   }) async {
-    var url = Uri.http(host, '${apiPath}/${resourcePath}');
+    var url = Uri.http(host, '${apiPath}/${resourcePath}.json');
     var response = await http.get(url);
 
     if (response.statusCode == 200) {

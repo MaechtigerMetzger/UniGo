@@ -14,7 +14,6 @@ Buchung buchungFromJson(String str) => Buchung.fromJson(json.decode(str));
 
 String buchungToJson(Buchung data) => json.encode(data.toJson());
 
-
 class Buchung {
   Buchung({
     required this.id,
