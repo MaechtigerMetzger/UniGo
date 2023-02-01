@@ -11,7 +11,7 @@ class UniGoService {
         resourcePath: "users.json", parseBody: nutzerListFromJson);
   }
 
-  Future<Nutzer> getUserById({required int id}) async {
+  Future<Nutzer> getNutzerById({required int id}) async {
     var result = await UGBackendServiceProvider.getObjectById<Nutzer>(
       id: id,
       resourcePath: "users",
