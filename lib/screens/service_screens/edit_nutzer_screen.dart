@@ -69,13 +69,13 @@ class EditNutzerScreen extends StatelessWidget {
             const SizedBox(height: 15),
             _buildFormTextField(
               name: 'firstname',
-              labelText: 'First name',
+              labelText: 'Vorname',
               value: nutzer.vorname,
             ),
             const SizedBox(height: 15),
             _buildFormTextField(
               name: 'lastname',
-              labelText: 'Last name',
+              labelText: 'Nachname',
               value: nutzer.nachname,
             ),
             const SizedBox(height: 15),
@@ -87,7 +87,7 @@ class EditNutzerScreen extends StatelessWidget {
             const SizedBox(height: 15),
             _buildFormTextField(
               name: 'password',
-              labelText: 'Password',
+              labelText: 'Passwort',
               value: nutzer.passwort,
             ),
             const SizedBox(height: 15),

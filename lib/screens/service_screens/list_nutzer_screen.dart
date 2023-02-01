@@ -27,6 +27,9 @@ class _ListNutzerScreenState extends State<ListNutzerScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Text("Nutzerliste"),
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
             Nutzer nutzer = Nutzer(
@@ -55,7 +58,7 @@ class _ListNutzerScreenState extends State<ListNutzerScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildHeader(),
+              //_buildHeader(),
               SizedBox(
                 height: 16,
               ),
@@ -72,40 +75,6 @@ class _ListNutzerScreenState extends State<ListNutzerScreen> {
               ),
               SizedBox(
                 height: 16,
-              ),
-              Row(
-                children: [
-                  _buildClearButton(),
-                  ElevatedButton(
-                    onPressed: () async {
-                      Nutzer nutzer = await service.getNutzerById(id: 101);
-                      nutzer.vorname = "${DateTime.now()}";
-                      await UGBackendServiceProvider.updateObjectById<Nutzer>(
-                        id: 109,
-                        data: nutzer,
-                        resourcePath: "nutzer",
-                        toJson: nutzerToJson,
-                      );
-                      setState(() {
-                        users = [];
-                      });
-                    },
-                    child: Text("update 101"),
-                  ),
-                  ElevatedButton(
-                    onPressed: () async {
-                      bool result =
-                          await UGBackendServiceProvider.deleteObjectById(
-                        id: 109,
-                        resourcePath: "nutzer",
-                      );
-                      setState(() {
-                        users = [];
-                      });
-                    },
-                    child: Text("delete 109"),
-                  ),
-                ],
               ),
               SizedBox(
                 height: 16,
