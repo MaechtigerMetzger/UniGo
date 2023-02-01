@@ -32,7 +32,8 @@ class EmailScreen extends StatelessWidget {
         ],
       ),
       backgroundColor: Color.fromARGB(255, 243, 243, 243),
-      body: Column(
+      body: SingleChildScrollView(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
@@ -63,8 +64,12 @@ class EmailScreen extends StatelessWidget {
             height: 10,
           ),
           _buildBox(""),
+          SizedBox(
+            height: 10,
+          ),
 
         ],
+      ),
       ),
     );
   }
