@@ -4,14 +4,14 @@ import 'package:unigo_prototyp/services/unigo_service.dart';
 
 import '../../services/model/nutzer.dart';
 
-class UserListScreen extends StatefulWidget {
-  const UserListScreen({Key? key}) : super(key: key);
+class ListNutzerScreen extends StatefulWidget {
+  const ListNutzerScreen({Key? key}) : super(key: key);
 
   @override
-  _UserListScreenState createState() => _UserListScreenState();
+  _ListNutzerScreenState createState() => _ListNutzerScreenState();
 }
 
-class _UserListScreenState extends State<UserListScreen> {
+class _ListNutzerScreenState extends State<ListNutzerScreen> {
   UniGoService service = UniGoService();
   List<Nutzer> users = [];
 

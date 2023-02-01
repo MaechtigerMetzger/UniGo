@@ -5,6 +5,7 @@ import 'package:unigo_prototyp/screens/home_screen.dart';
 import 'package:unigo_prototyp/screens/login_screen.dart';
 import 'package:unigo_prototyp/screens/profil/profile_screen.dart';
 import 'package:unigo_prototyp/screens/registrieren_screen.dart';
+import 'package:unigo_prototyp/screens/service_screens/list_nutzer_screen.dart';
 import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
 
 import 'fahrt_hinzufuegen_screen.dart';
@@ -24,6 +25,8 @@ class AuswahlScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          _buildRouteButton(context, "NutzerListScreen", ListNutzerScreen()),
+          _spacer(),
           _buildRouteButton(context, "HomeScreen", HomeScreen()),
           _spacer(),
           _buildRouteButton(context, "Dialog Test", DialogTestScreen()),
