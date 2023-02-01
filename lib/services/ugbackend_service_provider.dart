@@ -1,34 +1,10 @@
 import 'package:http/http.dart' as http;
-import 'package:unigo_prototyp/services/model/nutzer.dart';
 
-import 'model/object_not_found_exception.dart';
-
-class LSServiceProvider {
+class UGBackendServiceProvider {
   //static String host = "localhost:8000";
   //static String host = "10.0.2.2:8000";
   static String host = "193.174.29.13";
   static String apiPath = "/ugbackend/api/v1/";
-
-  /* Nutzer */
-
-  static Future<List<Nutzer>> getUsers() async {
-    return await getObjectList<Nutzer>(
-        resourcePath: "users.json", parseBody: nutzerListFromJson);
-  }
-
-  static Future<Nutzer> getUserById({required int id}) async {
-    var result = await getObjectById<Nutzer>(
-      id: id,
-      resourcePath: "users",
-      parseBody: nutzerFromJson,
-    );
-
-    if (result.isEmpty) {
-      throw ObjectNotFoundException();
-    }
-
-    return result[0];
-  }
 
   /* HELPER */
 
