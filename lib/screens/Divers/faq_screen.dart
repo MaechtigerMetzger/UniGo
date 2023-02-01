@@ -32,7 +32,8 @@ class FaqScreen extends StatelessWidget {
         ],
       ),
       backgroundColor: Color.fromARGB(255, 243, 243, 243),
-      body: Column(
+      body: SingleChildScrollView(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
@@ -40,7 +41,7 @@ class FaqScreen extends StatelessWidget {
           ),
           _buildUeberschrift(),
           SizedBox(
-            height: 40,
+            height: 30,
           ),
           _buildBox(""),
           SizedBox(
@@ -63,7 +64,11 @@ class FaqScreen extends StatelessWidget {
             height: 10,
           ),
           _buildBox(""),
+          SizedBox(
+            height: 10,
+          ),
         ],
+      ),
       ),
     );
   }
