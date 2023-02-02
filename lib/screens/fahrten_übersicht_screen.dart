@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
-import  'package:intl/intl.dart';
+import 'package:intl/intl.dart';
 
 class FahrtUebersicht extends StatelessWidget {
   const FahrtUebersicht({Key? key}) : super(key: key);
@@ -83,8 +83,63 @@ class FahrtUebersicht extends StatelessWidget {
   }
 
   //Platzhalter für die Karte
-  Container _buildFahrt0() {
-    return Container(
+  InkWell _buildFahrt0() {
+    return InkWell(
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.teal,
+        ),
+        height: 110,
+        width: 550,
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          children: [
+            Container(
+              alignment: Alignment.topLeft,
+              child: Text('Musterstart'),
+            ),
+            Row(
+              children: [
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  child: Icon(Icons.arrow_downward),
+                ),
+                Container(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 200),
+                    child: Text('10.45 Uhr'),
+                  ),
+                ),
+                Container(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Icon(Icons.arrow_forward_ios),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 13,
+              child: Container(
+                alignment: Alignment.bottomLeft,
+                child: Text('Hochschule Fulda'),
+              ),
+            ),
+          ],
+        ),
+      ),
+      onTap: () {},
+    );
+  }
+}
+
+InkWell _buildFahrt1() {
+  return InkWell(
+    child: Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Colors.teal,
@@ -103,19 +158,20 @@ class FahrtUebersicht extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.centerLeft,
-                margin: const EdgeInsets.all(20),
-                child: Text('Pfeil'),
+                margin:
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                child: Icon(Icons.arrow_downward),
               ),
               Container(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 220),
-                  child: Text('Uhrzeit'),
+                  padding: const EdgeInsets.only(left: 200),
+                  child: Text('10.45 Uhr'),
                 ),
               ),
               Container(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10),
-                  child: Text('>'),
+                  child: Icon(Icons.arrow_forward_ios),
                 ),
               ),
             ],
@@ -129,250 +185,219 @@ class FahrtUebersicht extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-Container _buildFahrt1() {
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(20),
-      color: Colors.teal,
     ),
-    height: 110,
-    width: 550,
-    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-    padding: const EdgeInsets.all(10),
-    child: Column(
-      children: [
-        Container(
-          alignment: Alignment.topLeft,
-          child: Text('Musterstart'),
-        ),
-        Row(
-          children: [
-            Container(
-              alignment: Alignment.centerLeft,
-              margin: const EdgeInsets.all(20),
-              child: Text('Pfeil'),
-            ),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 220),
-                child: Text('Uhrzeit'),
-              ),
-            ),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text('>'),
-              ),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 13,
-          child: Container(
-            alignment: Alignment.bottomLeft,
-            child: Text('Hochschule Fulda'),
-          ),
-        ),
-      ],
-    ),
+    onTap: () {},
   );
 }
 
-Container _buildFahrt2() {
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(20),
-      color: Colors.teal,
-    ),
-    height: 110,
-    width: 550,
-    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-    padding: const EdgeInsets.all(10),
-    child: Column(
-      children: [
-        Container(
-          alignment: Alignment.topLeft,
-          child: Text('Musterstart'),
-        ),
-        Row(
-          children: [
-            Container(
-              alignment: Alignment.centerLeft,
-              margin: const EdgeInsets.all(20),
-              child: Text('Pfeil'),
-            ),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 220),
-                child: Text('Uhrzeit'),
-              ),
-            ),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text('>'),
-              ),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 13,
-          child: Container(
-            alignment: Alignment.bottomLeft,
-            child: Text('Hochschule Fulda'),
+InkWell _buildFahrt2() {
+  return InkWell(
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.teal,
+      ),
+      height: 110,
+      width: 550,
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        children: [
+          Container(
+            alignment: Alignment.topLeft,
+            child: Text('Musterstart'),
           ),
-        ),
-      ],
+          Row(
+            children: [
+              Container(
+                alignment: Alignment.centerLeft,
+                margin:
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                child: Icon(Icons.arrow_downward),
+              ),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 200),
+                  child: Text('10.45 Uhr'),
+                ),
+              ),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Icon(Icons.arrow_forward_ios),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 13,
+            child: Container(
+              alignment: Alignment.bottomLeft,
+              child: Text('Hochschule Fulda'),
+            ),
+          ),
+        ],
+      ),
     ),
+    onTap: () {},
   );
 }
 
-Container _buildFahrt3() {
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(20),
-      color: Colors.teal,
-    ),
-    height: 110,
-    width: 550,
-    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-    padding: const EdgeInsets.all(10),
-    child: Column(
-      children: [
-        Container(
-          alignment: Alignment.topLeft,
-          child: Text('Musterstart'),
-        ),
-        Row(
-          children: [
-            Container(
-              alignment: Alignment.centerLeft,
-              margin: const EdgeInsets.all(20),
-              child: Text('Pfeil'),
-            ),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 220),
-                child: Text('Uhrzeit'),
-              ),
-            ),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text('>'),
-              ),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 13,
-          child: Container(
-            alignment: Alignment.bottomLeft,
-            child: Text('Hochschule Fulda'),
+InkWell _buildFahrt3() {
+  return InkWell(
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.teal,
+      ),
+      height: 110,
+      width: 550,
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        children: [
+          Container(
+            alignment: Alignment.topLeft,
+            child: Text('Musterstart'),
           ),
-        ),
-      ],
+          Row(
+            children: [
+              Container(
+                alignment: Alignment.centerLeft,
+                margin:
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                child: Icon(Icons.arrow_downward),
+              ),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 200),
+                  child: Text('10.45 Uhr'),
+                ),
+              ),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Icon(Icons.arrow_forward_ios),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 13,
+            child: Container(
+              alignment: Alignment.bottomLeft,
+              child: Text('Hochschule Fulda'),
+            ),
+          ),
+        ],
+      ),
     ),
+    onTap: () {},
   );
 }
 
-Container _buildFahrt4() {
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(20),
-      color: Colors.teal,
-    ),
-    height: 110,
-    width: 550,
-    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-    padding: const EdgeInsets.all(10),
-    child: Column(
-      children: [
-        Container(
-          alignment: Alignment.topLeft,
-          child: Text('Musterstart'),
-        ),
-        Row(
-          children: [
-            Container(
-              alignment: Alignment.centerLeft,
-              margin: const EdgeInsets.all(20),
-              child: Text('Pfeil'),
-            ),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 220),
-                child: Text('Uhrzeit'),
-              ),
-            ),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text('>'),
-              ),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 13,
-          child: Container(
-            alignment: Alignment.bottomLeft,
-            child: Text('Hochschule Fulda'),
+InkWell _buildFahrt4() {
+  return InkWell(
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.teal,
+      ),
+      height: 110,
+      width: 550,
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        children: [
+          Container(
+            alignment: Alignment.topLeft,
+            child: Text('Musterstart'),
           ),
-        ),
-      ],
+          Row(
+            children: [
+              Container(
+                alignment: Alignment.centerLeft,
+                margin:
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                child: Icon(Icons.arrow_downward),
+              ),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 200),
+                  child: Text('10.45 Uhr'),
+                ),
+              ),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Icon(Icons.arrow_forward_ios),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 13,
+            child: Container(
+              alignment: Alignment.bottomLeft,
+              child: Text('Hochschule Fulda'),
+            ),
+          ),
+        ],
+      ),
     ),
+    onTap: () {},
   );
 }
-Container _buildFahrt5() {
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(20),
-      color: Colors.teal,
-    ),
-    height: 110,
-    width: 550,
-    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-    padding: const EdgeInsets.all(10),
-    child: Column(
-      children: [
-        Container(
-          alignment: Alignment.topLeft,
-          child: Text('Musterstart'),
-        ),
-        Row(
-          children: [
-            Container(
-              alignment: Alignment.centerLeft,
-              margin: const EdgeInsets.all(20),
-              child: Text('Pfeil'),
-            ),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 220),
-                child: Text('Uhrzeit'),
-              ),
-            ),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text('>'),
-              ),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 13,
-          child: Container(
-            alignment: Alignment.bottomLeft,
-            child: Text('Hochschule Fulda'),
+
+InkWell _buildFahrt5() {
+  return InkWell(
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.teal,
+      ),
+      height: 110,
+      width: 550,
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        children: [
+          Container(
+            alignment: Alignment.topLeft,
+            child: Text('Musterstart'),
           ),
-        ),
-      ],
+          Row(
+            children: [
+              Container(
+                alignment: Alignment.centerLeft,
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                child: Icon(Icons.arrow_downward),
+              ),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 200),
+                  child: Text('10.45 Uhr'),
+                ),
+              ),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Icon(Icons.arrow_forward_ios),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 13,
+            child: Container(
+              alignment: Alignment.bottomLeft,
+              child: Text('Hochschule Fulda'),
+            ),
+          ),
+        ],
+      ),
     ),
+    onTap: () {},
   );
 }

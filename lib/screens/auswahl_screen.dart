@@ -6,6 +6,7 @@ import 'package:unigo_prototyp/screens/login_screen.dart';
 import 'package:unigo_prototyp/screens/profil/profile_screen.dart';
 import 'package:unigo_prototyp/screens/registrieren_screen.dart';
 import 'package:unigo_prototyp/screens/service_screens/list_nutzer_screen.dart';
+import 'package:unigo_prototyp/screens/settings_screen.dart';
 import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
 
 import 'fahrt_hinzufuegen_screen.dart';

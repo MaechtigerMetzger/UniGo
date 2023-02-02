@@ -243,7 +243,7 @@ class FahrtHinzufuegenScreenI extends StatelessWidget {
                               side: BorderSide(color: Colors.teal),
                             )),
                           ),
-                          child: Text('Autosymbol'),
+                          child: Icon(Icons.car_crash),
                         ),
                       ),
                     ],
@@ -317,7 +317,7 @@ class FahrtHinzufuegenScreenI extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                   borderSide: BorderSide(color: Colors.teal),
                 ),
-                hintText: 'Ziel...',
+                hintText: 'Ziel... Hochschule Fulda',
                 isDense: true, // Added this
                 contentPadding: EdgeInsets.all(15),
               ),
