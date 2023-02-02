@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
+import  'package:intl/intl.dart';
 
 class FahrtUebersicht extends StatelessWidget {
   const FahrtUebersicht({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class FahrtUebersicht extends StatelessWidget {
           color: Colors.black,
         ),
         title: const Text(
-          'Fahrten',
+          'Fahrten Übersicht',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
@@ -45,37 +46,36 @@ class FahrtUebersicht extends StatelessWidget {
         ],
       ),
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            //Aktuelles Datum
-            _buildDate(),
-            //Übersicht Fahrten
-            _buildFahrt0(),
-            /*_buildFahrt1(),
-            _buildFahrt2(),
-            _buildFahrt3(),
-            _buildFahrt4(),
-            //_buildFahrt5(),*/
-          ],
-        ),
+      body: ListView(
+        children: [
+          //Aktuelles Datum
+          _buildDate(),
+          //Übersicht Fahrten
+          _buildFahrt0(),
+          _buildFahrt1(),
+          _buildFahrt2(),
+          _buildFahrt3(),
+          _buildFahrt4(),
+          _buildFahrt5(),
+        ],
       ),
     );
   }
 
   //Aktuelles Datum
   Container _buildDate() {
+    String cdate = DateFormat("dd, MMMM, yyyy").format(DateTime.now());
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Colors.white,
       ),
-      height: 60,
+      height: 65,
       width: 550,
       margin: const EdgeInsets.all(0),
       padding: const EdgeInsets.all(20),
       child: Text(
-        'am 12.01.2023',
+        cdate,
         style: TextStyle(fontSize: 20),
         textAlign: TextAlign.left,
       ),
@@ -91,7 +91,7 @@ class FahrtUebersicht extends StatelessWidget {
       ),
       height: 110,
       width: 550,
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       padding: const EdgeInsets.all(10),
       child: Column(
         children: [
@@ -106,11 +106,16 @@ class FahrtUebersicht extends StatelessWidget {
                 margin: const EdgeInsets.all(20),
                 child: Text('Pfeil'),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 100),
-                child: Container(
-                  alignment: Alignment.centerRight,
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 220),
                   child: Text('Uhrzeit'),
+                ),
+              ),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Text('>'),
                 ),
               ),
             ],
@@ -126,4 +131,248 @@ class FahrtUebersicht extends StatelessWidget {
       ),
     );
   }
+}
+
+Container _buildFahrt1() {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(20),
+      color: Colors.teal,
+    ),
+    height: 110,
+    width: 550,
+    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+    padding: const EdgeInsets.all(10),
+    child: Column(
+      children: [
+        Container(
+          alignment: Alignment.topLeft,
+          child: Text('Musterstart'),
+        ),
+        Row(
+          children: [
+            Container(
+              alignment: Alignment.centerLeft,
+              margin: const EdgeInsets.all(20),
+              child: Text('Pfeil'),
+            ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 220),
+                child: Text('Uhrzeit'),
+              ),
+            ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text('>'),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 13,
+          child: Container(
+            alignment: Alignment.bottomLeft,
+            child: Text('Hochschule Fulda'),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Container _buildFahrt2() {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(20),
+      color: Colors.teal,
+    ),
+    height: 110,
+    width: 550,
+    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+    padding: const EdgeInsets.all(10),
+    child: Column(
+      children: [
+        Container(
+          alignment: Alignment.topLeft,
+          child: Text('Musterstart'),
+        ),
+        Row(
+          children: [
+            Container(
+              alignment: Alignment.centerLeft,
+              margin: const EdgeInsets.all(20),
+              child: Text('Pfeil'),
+            ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 220),
+                child: Text('Uhrzeit'),
+              ),
+            ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text('>'),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 13,
+          child: Container(
+            alignment: Alignment.bottomLeft,
+            child: Text('Hochschule Fulda'),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Container _buildFahrt3() {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(20),
+      color: Colors.teal,
+    ),
+    height: 110,
+    width: 550,
+    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+    padding: const EdgeInsets.all(10),
+    child: Column(
+      children: [
+        Container(
+          alignment: Alignment.topLeft,
+          child: Text('Musterstart'),
+        ),
+        Row(
+          children: [
+            Container(
+              alignment: Alignment.centerLeft,
+              margin: const EdgeInsets.all(20),
+              child: Text('Pfeil'),
+            ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 220),
+                child: Text('Uhrzeit'),
+              ),
+            ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text('>'),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 13,
+          child: Container(
+            alignment: Alignment.bottomLeft,
+            child: Text('Hochschule Fulda'),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Container _buildFahrt4() {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(20),
+      color: Colors.teal,
+    ),
+    height: 110,
+    width: 550,
+    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+    padding: const EdgeInsets.all(10),
+    child: Column(
+      children: [
+        Container(
+          alignment: Alignment.topLeft,
+          child: Text('Musterstart'),
+        ),
+        Row(
+          children: [
+            Container(
+              alignment: Alignment.centerLeft,
+              margin: const EdgeInsets.all(20),
+              child: Text('Pfeil'),
+            ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 220),
+                child: Text('Uhrzeit'),
+              ),
+            ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text('>'),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 13,
+          child: Container(
+            alignment: Alignment.bottomLeft,
+            child: Text('Hochschule Fulda'),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+Container _buildFahrt5() {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(20),
+      color: Colors.teal,
+    ),
+    height: 110,
+    width: 550,
+    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+    padding: const EdgeInsets.all(10),
+    child: Column(
+      children: [
+        Container(
+          alignment: Alignment.topLeft,
+          child: Text('Musterstart'),
+        ),
+        Row(
+          children: [
+            Container(
+              alignment: Alignment.centerLeft,
+              margin: const EdgeInsets.all(20),
+              child: Text('Pfeil'),
+            ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 220),
+                child: Text('Uhrzeit'),
+              ),
+            ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text('>'),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 13,
+          child: Container(
+            alignment: Alignment.bottomLeft,
+            child: Text('Hochschule Fulda'),
+          ),
+        ),
+      ],
+    ),
+  );
 }

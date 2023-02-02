@@ -147,7 +147,7 @@ class _FahrtSuchen extends State<FahrtSuchen> {
                   borderRadius: BorderRadius.circular(10.0),
                   borderSide: BorderSide(color: Colors.teal),
                 ),
-                hintText: ziel,
+                hintText: 'Hochschule Fulda',
                 isDense: true, // Added this
                 contentPadding: EdgeInsets.all(15),
               ),
