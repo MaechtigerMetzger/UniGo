@@ -54,17 +54,12 @@ class SettingsScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Row(
                 children: [
-                  Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: NetworkImage("https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"),
-                        fit: BoxFit.cover,
-                      ),
+                    Icon(
+                      Icons.account_circle_rounded,
+                      size: 90,
+                      color: Color.fromARGB(255, 255, 255, 255),
                     ),
-                  ),
+
                   SizedBox(width: 30),
                   Text(
                     "Max Mustermann",
@@ -74,7 +69,7 @@ class SettingsScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                  SizedBox(width: 30),
+                  SizedBox(height: 10),
                   Text(
                     "mustermann@gmail.com",
                     style: TextStyle(

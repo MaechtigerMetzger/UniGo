@@ -7,11 +7,31 @@ class BenachrichtigungScreen extends StatefulWidget {
 }
 
 class _BenachrichtigungScreenState extends State<BenachrichtigungScreen> {
-  bool _value = false;
+  bool _valuePush = false;
+  bool _valueAnfrage = true;
+  bool _valueNachrichten = false;
+  bool _valueVibration = false;
 
-  void _toggleValue(bool value) {
+  void _toggleValuePush(bool valuePush) {
     setState(() {
-      _value = value;
+      _valuePush = valuePush;
+    });
+  }
+
+  void _toggleValueAnfrage(bool valueAnfrage) {
+    setState(() {
+      _valueAnfrage = valueAnfrage;
+    });
+  }
+
+  void _toggleValueNachrichten(bool valueNachrichten) {
+    setState(() {
+      _valueNachrichten = valueNachrichten;
+    });
+  }
+  void _toggleValueVibration(bool valueVibration) {
+    setState(() {
+      _valueVibration = valueVibration;
     });
   }
   @override
@@ -25,28 +45,30 @@ class _BenachrichtigungScreenState extends State<BenachrichtigungScreen> {
             // Perform the desired action when the arrow is pressed
           },
            ),
-          title: Text("Einstellungen",style: TextStyle(color:Colors.black)),
+          title: Text("Benachrichtigungen",style: TextStyle(color:Colors.black)),
         ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+
           SwitchListTile(
-            value: _value,
-            onChanged: _toggleValue,
+            value: _valuePush,
+            onChanged: _toggleValuePush,
             title: Text('Push-Benachrichtigung'),
           ),
           SwitchListTile(
-            value: _value,
-            onChanged: _toggleValue,
+            value: _valueAnfrage,
+            onChanged: _toggleValueAnfrage,
             title: Text('Nachrichtenanfragen'),
           ),
           SwitchListTile(
-            value: _value,
-            onChanged: _toggleValue,
+            value: _valueNachrichten,
+            onChanged: _toggleValueNachrichten,
             title: Text('Nachrichten'),
           ),
           SwitchListTile(
-            value: _value,
-            onChanged: _toggleValue,
+            value: _valueVibration,
+            onChanged: _toggleValueVibration,
             title: Text('Vibration'),
           ),
         ],
