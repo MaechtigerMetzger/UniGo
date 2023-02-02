@@ -1,13 +1,22 @@
+import 'package:path/path.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
+import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.dart';
 
 import 'fahrten_übersicht_screen.dart';
 
-class FahrtSuchen extends StatelessWidget {
+class FahrtSuchen extends StatefulWidget {
   const FahrtSuchen({Key? key}) : super(key: key);
+
+  _FahrtSuchen createState() => _FahrtSuchen();
+}
+
+class _FahrtSuchen extends State<FahrtSuchen> {
+  String address = '';
+  String ziel = '';
 
   @override
   Widget build(BuildContext context) {
@@ -66,24 +75,39 @@ class FahrtSuchen extends StatelessWidget {
     );
   }
 
-//Button zum Senden der Daten
+  ElevatedButton _buildRouteButton(
+      BuildContext context, String text, Widget widget) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => widget,
+            ));
+      },
+      child: Text(text),
+    );
+  }
+
+//Button zum Suchen
   Container _buildSende() {
     return Container(
       width: 250,
       height: 50,
-      margin: const EdgeInsets.all(40.0),
+      margin: const EdgeInsets.all(10.0),
       child: ElevatedButton(
         child: const Text('Suchen', style: TextStyle(fontSize: 20)),
         onPressed: () {
+          //Navigator.pop(context); Context funktioniert nicht?!
         },
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all(Colors.white),
           backgroundColor: MaterialStateProperty.all(Colors.teal),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-                side: BorderSide(color: Colors.teal),
-              )),
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: Colors.teal),
+          )),
         ),
       ),
     );
@@ -101,9 +125,6 @@ class FahrtSuchen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            SizedBox(
-              height: 10,
-            ),
             TextFormField(
               textAlign: TextAlign.center,
               decoration: InputDecoration(
@@ -111,7 +132,7 @@ class FahrtSuchen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                   borderSide: BorderSide(color: Colors.teal),
                 ),
-                hintText: 'Start...',
+                hintText: address,
                 isDense: true, // Added this
                 contentPadding: EdgeInsets.all(15),
               ),
@@ -126,7 +147,7 @@ class FahrtSuchen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                   borderSide: BorderSide(color: Colors.teal),
                 ),
-                hintText: 'Ziel...',
+                hintText: ziel,
                 isDense: true, // Added this
                 contentPadding: EdgeInsets.all(15),
               ),
@@ -140,21 +161,27 @@ class FahrtSuchen extends StatelessWidget {
 //Platzhalter für die Karte
   Container _buildMap() {
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: Colors.white,
-      ),
-      height: 200,
-      width: 300,
-      alignment: Alignment.bottomCenter,
-      margin: const EdgeInsets.all(10),
-      padding: const EdgeInsets.all(20),
-      child: Image.network(
-        'https://cdn.pixabay.com/photo/2019/03/08/15/55/map-4042585_960_720.png',
-        height: 200,
-        width: 300,
-      ),
-    );
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: Colors.white,
+        ),
+        height: 300,
+        width: 400,
+        alignment: Alignment.bottomCenter,
+        margin: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(20),
+        child: OpenStreetMapSearchAndPick(
+            center: LatLong(50, 9),
+            buttonColor: Colors.blue,
+            buttonText: 'Set Current Location',
+            onPicked: (pickedData) {
+              setState(() {
+                address = pickedData.address;
+              });
+              print(pickedData.latLong.latitude);
+              print(pickedData.latLong.longitude);
+              print(pickedData.address);
+            }));
   }
 
 //Buttons für Vorgefertigte Passagen
@@ -172,9 +199,9 @@ class FahrtSuchen extends StatelessWidget {
                 backgroundColor: MaterialStateProperty.all(Colors.grey),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(color: Colors.grey),
-                    )),
+                  borderRadius: BorderRadius.circular(10),
+                  side: BorderSide(color: Colors.grey),
+                )),
               ),
               child: Text('Ort'),
             ),
@@ -188,9 +215,9 @@ class FahrtSuchen extends StatelessWidget {
                 backgroundColor: MaterialStateProperty.all(Colors.grey),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(color: Colors.grey),
-                    )),
+                  borderRadius: BorderRadius.circular(10),
+                  side: BorderSide(color: Colors.grey),
+                )),
               ),
               child: Text('Datum'),
             ),
@@ -204,9 +231,9 @@ class FahrtSuchen extends StatelessWidget {
                 backgroundColor: MaterialStateProperty.all(Colors.grey),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(color: Colors.grey),
-                    )),
+                  borderRadius: BorderRadius.circular(10),
+                  side: BorderSide(color: Colors.grey),
+                )),
               ),
               child: Text('Zeit'),
             ),
@@ -216,4 +243,3 @@ class FahrtSuchen extends StatelessWidget {
     );
   }
 }
-
