@@ -84,18 +84,45 @@ class EmailScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           color: Color.fromARGB(255, 219, 237, 236),
         ),
-        width: 350,
         height: 100,
+        width: 350,
 
-      child: Row(
-        children: [
-        Container(
-        alignment: Alignment.topLeft,
-        child: Text('Email'),
-      ),
-       ]
-    ),
+        child: Row(
+            children: [
+
+              Container(
+
+                width: 100,
+                height: 60,
+                child: Text("?",
+                  style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 33,
+                    color: Color.fromARGB(255, 114, 147, 145)
+                ),
+                ),
+
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+
+                    color: Color.fromARGB(255, 194, 223, 222)),
+                alignment: Alignment.center,
+                padding: EdgeInsets.symmetric(horizontal: 40, vertical:0),
+              ),
+
+          Expanded(
+              child: Container(
+                transform: Matrix4.translationValues(-20.0, 0.0, 0.0),
+              child: ListTile(
+                title:  Text("Mustermail", textAlign: TextAlign.start, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, ),),
+                subtitle: Text('Lorem ipsum dolor sit\namet, consetetur sadd',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color.fromARGB(255, 67, 67, 67)),),
+              ),
+          ),
+          ),
+            ]
+        )
     );
+
   }
 
   Container _buildEingabe(String text) {
