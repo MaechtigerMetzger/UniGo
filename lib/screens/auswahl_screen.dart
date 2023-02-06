@@ -7,6 +7,9 @@ import 'package:unigo_prototyp/screens/profil/profile_screen.dart';
 import 'package:unigo_prototyp/screens/registrieren_screen.dart';
 import 'package:unigo_prototyp/screens/service_screens/list_nutzer_screen.dart';
 import 'package:unigo_prototyp/screens/settings_screen.dart';
+import 'package:unigo_prototyp/screens/settings/cookies_screen.dart';
+import 'package:unigo_prototyp/screens/settings/authentifizierung_screen.dart';
+import 'package:unigo_prototyp/screens/settings/datenschutz_screen.dart';
 import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
 
 import 'fahrt_hinzufuegen_screen.dart';
@@ -49,6 +52,12 @@ class AuswahlScreen extends StatelessWidget {
           _buildRouteButton(context, "Emails", EmailScreen()),
           _spacer(),
           _buildRouteButton(context, "FAQ", FaqScreen()),
+          _spacer(),
+          _buildRouteButton(context, "Cookies", CookiesScreen()),
+          _spacer(),
+          _buildRouteButton(context, "Authentifizierung", AuthentifizierungScreen()),
+          _spacer(),
+          _buildRouteButton(context, "Datenschutz",DatenschutzScreen()),
         ],
       ),
     ));
