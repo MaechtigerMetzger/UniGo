@@ -71,6 +71,22 @@ class EmailScreen extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
+          _buildBox(""),
+          SizedBox(
+            height: 10,
+          ),
+          _buildBox(""),
+          SizedBox(
+            height: 10,
+          ),
+          _buildBox(""),
+          SizedBox(
+            height: 10,
+          ),
+          _buildBox(""),
+          SizedBox(
+            height: 10,
+          ),
 
         ],
       ),
