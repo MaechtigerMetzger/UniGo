@@ -29,6 +29,14 @@ class Buchung {
   List<int> mitfahrer;
   List<int> angebot;
 
+  Buchung.empty({
+    this.id = 0,
+    this.name = "name",
+    this.fahrer = const [],
+    this.mitfahrer = const [],
+    this.angebot = const [],
+  });
+
   factory Buchung.fromJson(Map<String, dynamic> json) => Buchung(
         id: json["id"],
         name: json["name"],
