@@ -27,6 +27,16 @@ class UniGoService {
     return result[0];
   }
 
+  Future<bool> updateNutzerById({required int id, required Nutzer data}) async {
+    var result = await UGBackendServiceProvider.updateObjectById<Nutzer>(
+      id: id,
+      data: data,
+      resourcePath: "nutzer",
+      objectToJson: nutzerToJson,
+    );
+    return result;
+  }
+
   Future<bool> deleteNutzerById({required int id}) async {
     var result = await UGBackendServiceProvider.deleteObjectById(
       id: id,

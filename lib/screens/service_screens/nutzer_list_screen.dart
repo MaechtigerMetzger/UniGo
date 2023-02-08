@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:unigo_prototyp/screens/service_screens/edit_nutzer_screen.dart';
+import 'package:get/get.dart';
+import 'package:unigo_prototyp/screens/service_screens/nutzer_edit_screen.dart';
+import 'package:unigo_prototyp/services/controller/ug_state_controller.dart';
 import 'package:unigo_prototyp/services/ugbackend_service_provider.dart';
 import 'package:unigo_prototyp/services/unigo_service.dart';
 
 import '../../services/model/nutzer.dart';
 
-class ListNutzerScreen extends StatefulWidget {
-  const ListNutzerScreen({Key? key}) : super(key: key);
+class NutzerListScreen extends StatefulWidget {
+
+  const NutzerListScreen({Key? key}) : super(key: key);
 
   @override
-  _ListNutzerScreenState createState() => _ListNutzerScreenState();
+  _NutzerListScreenState createState() => _NutzerListScreenState();
 }
 
-class _ListNutzerScreenState extends State<ListNutzerScreen> {
+class _NutzerListScreenState extends State<NutzerListScreen> {
+  UGStateController _controller = Get.find();
   UniGoService service = UniGoService();
   List<Nutzer> users = [];
 
@@ -62,16 +66,20 @@ class _ListNutzerScreenState extends State<ListNutzerScreen> {
               SizedBox(
                 height: 16,
               ),
-              FutureBuilder<bool>(
-                future: _loadUsers(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return _buildListView(snapshot);
-                  } else if (snapshot.hasError) {
-                    return Text('${snapshot.error}');
-                  }
-                  return CircularProgressIndicator();
-                },
+              Obx(() {
+                int _change = _controller.somethingChanged.value;
+                return FutureBuilder<bool>(
+                  future: _loadUsers(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return _buildListView(snapshot);
+                    } else if (snapshot.hasError) {
+                      return Text('${snapshot.error}');
+                    }
+                    return CircularProgressIndicator();
+                  },
+                );
+              },
               ),
               SizedBox(
                 height: 16,
@@ -157,7 +165,7 @@ class _ListNutzerScreenState extends State<ListNutzerScreen> {
                     IconButton(
                       onPressed: () async {
                         bool result =
-                            await service.deleteNutzerById(id: nutzer.id);
+                        await service.deleteNutzerById(id: nutzer.id);
                         print(nutzer.id);
                         setState(() {});
                       },
@@ -168,7 +176,7 @@ class _ListNutzerScreenState extends State<ListNutzerScreen> {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) =>
-                                EditNutzerScreen(id: nutzer.id),
+                                NutzerEditScreen(id: nutzer.id),
                           ),
                         );
                       },

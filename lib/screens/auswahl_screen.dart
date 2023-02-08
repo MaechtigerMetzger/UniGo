@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:unigo_prototyp/screens/dialog_test_screen.dart';
 import 'package:unigo_prototyp/screens/fahrten/fahrt_hinzufuegen_screen.dart';
 import 'package:unigo_prototyp/screens/home_screen.dart';
 import 'package:unigo_prototyp/screens/login_screen.dart';
 import 'package:unigo_prototyp/screens/profil/profile_screen.dart';
 import 'package:unigo_prototyp/screens/registrieren_screen.dart';
-import 'package:unigo_prototyp/screens/service_screens/list_nutzer_screen.dart';
+import 'package:unigo_prototyp/screens/service_screens/nutzer_list_screen.dart';
 import 'package:unigo_prototyp/screens/settings_screen.dart';
 import 'package:unigo_prototyp/screens/settings/cookies_screen.dart';
 import 'package:unigo_prototyp/screens/settings/authentifizierung_screen.dart';
 import 'package:unigo_prototyp/screens/settings/datenschutz_screen.dart';
+import 'package:unigo_prototyp/services/controller/ug_state_controller.dart';
 import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
 
 import 'fahrt_hinzufuegen_screen.dart';
@@ -20,7 +22,9 @@ import 'package:unigo_prototyp/screens/Divers/email_screen.dart';
 import 'package:unigo_prototyp/screens/Divers/faq_screen.dart';
 
 class AuswahlScreen extends StatelessWidget {
-  const AuswahlScreen({Key? key}) : super(key: key);
+  UGStateController _controller = Get.put(UGStateController());
+
+  AuswahlScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,7 @@ class AuswahlScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _buildRouteButton(context, "NutzerListScreen", ListNutzerScreen()),
+          _buildRouteButton(context, "NutzerListScreen", NutzerListScreen()),
           _spacer(),
           _buildRouteButton(context, "HomeScreen", HomeScreen()),
           _spacer(),
