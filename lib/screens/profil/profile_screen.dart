@@ -6,24 +6,23 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         iconTheme: const IconThemeData(
           color: Color.fromARGB(255, 255, 255, 255),
         ),
         backgroundColor: const Color.fromARGB(255, 77, 103, 111),
-        title: const Text("Belohnungen",
+        centerTitle: true,
+        title: const Text(
+          "Profil",
           style: TextStyle(color: Colors.white),
         ),
       ),
-
-
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         unselectedIconTheme: IconThemeData(
-          color: Colors.white,),
-        selectedIconTheme: IconThemeData(
-            color: Colors.white60),
+          color: Colors.white,
+        ),
+        selectedIconTheme: IconThemeData(color: Colors.white60),
         showUnselectedLabels: false,
         showSelectedLabels: false,
         backgroundColor: const Color.fromARGB(255, 77, 103, 111),
@@ -33,7 +32,7 @@ class ProfileScreen extends StatelessWidget {
             label: "",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.car_rental),
+            icon: Icon(Icons.directions_car),
             label: "",
           ),
           BottomNavigationBarItem(
@@ -46,10 +45,6 @@ class ProfileScreen extends StatelessWidget {
           ),
         ],
       ),
-
-
-
-
       backgroundColor: Color.fromARGB(255, 219, 237, 236),
       body: SingleChildScrollView(
         child: Column(
@@ -59,9 +54,9 @@ class ProfileScreen extends StatelessWidget {
               color: Colors.white,
               child: Column(
                 children: [
-                  SizedBox(height: 80),
+                  SizedBox(height: 50),
                   _buildUser("Max Mustermann"),
-                  SizedBox(height: 20),
+                  SizedBox(height: 30),
                 ],
               ),
             ),
