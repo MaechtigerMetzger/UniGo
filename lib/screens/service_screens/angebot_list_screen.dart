@@ -36,20 +36,20 @@ class _AngebotListScreenState extends State<AngebotListScreen> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
-            Nutzer nutzer = Nutzer(
+            Angebot angebot = Angebot(
               id: 0,
-              vorname: "Harry",
-              nachname: "Potter",
-              passwort: "Expecto patronum",
-              geburtsdatum: "1.1.2000",
-              hasprofile: [],
-              email: "h.p@ligusterweg.hex",
+              datum: DateTime.now(),
+              uhrzeit: "00:00:00",
+              freiplaetze: 0,
+              startort: "hier",
+              zielort: "da",
+              hasprofile: []
             );
 
-            bool result = await UGBackendServiceProvider.createObject<Nutzer>(
-              data: nutzer,
-              toJson: nutzerToJson,
-              resourcePath: "nutzer.json",
+            bool result = await UGBackendServiceProvider.createObject<Angebot>(
+              data: angebot,
+              toJson: angebotToJson,
+              resourcePath: "angebot.json",
             );
 
             setState(() {

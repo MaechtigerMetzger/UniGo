@@ -47,6 +47,7 @@ class UGBackendServiceProvider {
   }) async {
     var url = Uri.https(host, '${apiPath}/${resourcePath}');
     String json = toJson(data);
+    print(json);
 
     http.Response resonse = await http.post(
       url,
