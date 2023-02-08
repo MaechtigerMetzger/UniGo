@@ -8,14 +8,16 @@ class UniGoService {
 
   Future<List<Nutzer>> getNutzerList() async {
     return await UGBackendServiceProvider.getObjectList<Nutzer>(
-        resourcePath: "nutzer", parseBody: nutzerListFromJson);
+      resourcePath: "nutzer",
+      listFromJson: nutzerListFromJson,
+    );
   }
 
   Future<Nutzer> getNutzerById({required int id}) async {
     var result = await UGBackendServiceProvider.getObjectById<Nutzer>(
       id: id,
       resourcePath: "nutzer",
-      parseBody: nutzerFromJson,
+      objectFromJson: nutzerFromJson,
     );
 
     if (result.isEmpty) {
@@ -32,5 +34,4 @@ class UniGoService {
     );
     return result;
   }
-
 }
