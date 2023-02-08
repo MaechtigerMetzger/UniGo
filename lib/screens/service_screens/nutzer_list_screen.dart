@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:unigo_prototyp/screens/service_screens/nutzer_edit_screen.dart';
 import 'package:unigo_prototyp/services/controller/ug_state_controller.dart';
+import 'package:unigo_prototyp/services/extensions/unigo_service_nutzer_extension.dart';
 import 'package:unigo_prototyp/services/ugbackend_service_provider.dart';
 import 'package:unigo_prototyp/services/unigo_service.dart';
 
 import '../../services/model/nutzer.dart';
 
 class NutzerListScreen extends StatefulWidget {
-
   const NutzerListScreen({Key? key}) : super(key: key);
 
   @override
@@ -46,11 +46,8 @@ class _NutzerListScreenState extends State<NutzerListScreen> {
               email: "h.p@ligusterweg.hex",
             );
 
-            bool result = await UGBackendServiceProvider.createObject<Nutzer>(
-              data: nutzer,
-              toJson: nutzerToJson,
-              resourcePath: "nutzer.json",
-            );
+            bool result = await service.createNutzerById(id: 0, data: nutzer);
+            print (result);
 
             setState(() {
               // update der Liste
@@ -66,20 +63,21 @@ class _NutzerListScreenState extends State<NutzerListScreen> {
               SizedBox(
                 height: 16,
               ),
-              Obx(() {
-                int _change = _controller.somethingChanged.value;
-                return FutureBuilder<bool>(
-                  future: _loadUsers(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return _buildListView(snapshot);
-                    } else if (snapshot.hasError) {
-                      return Text('${snapshot.error}');
-                    }
-                    return CircularProgressIndicator();
-                  },
-                );
-              },
+              Obx(
+                () {
+                  int _change = _controller.somethingChanged.value;
+                  return FutureBuilder<bool>(
+                    future: _loadUsers(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return _buildListView(snapshot);
+                      } else if (snapshot.hasError) {
+                        return Text('${snapshot.error}');
+                      }
+                      return CircularProgressIndicator();
+                    },
+                  );
+                },
               ),
               SizedBox(
                 height: 16,
@@ -165,7 +163,7 @@ class _NutzerListScreenState extends State<NutzerListScreen> {
                     IconButton(
                       onPressed: () async {
                         bool result =
-                        await service.deleteNutzerById(id: nutzer.id);
+                            await service.deleteNutzerById(id: nutzer.id);
                         print(nutzer.id);
                         setState(() {});
                       },

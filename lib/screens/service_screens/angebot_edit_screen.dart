@@ -3,22 +3,24 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:unigo_prototyp/services/controller/ug_state_controller.dart';
+import 'package:unigo_prototyp/services/extensions/unigo_service_angebot_extension.dart';
 import 'package:unigo_prototyp/services/extensions/unigo_service_nutzer_extension.dart';
 import 'package:unigo_prototyp/services/model/object_not_found_exception.dart';
 
+import '../../services/model/angebot.dart';
 import '../../services/model/nutzer.dart';
 import '../../services/unigo_service.dart';
 
-class NutzerEditScreen extends StatelessWidget {
+class AngebotEditScreen extends StatelessWidget {
   UGStateController _controller = Get.find();
   int id;
   late UniGoService service;
-  late Nutzer nutzer;
+  late Angebot angebot;
 
   void _onChanged(dynamic val) => debugPrint(val.toString());
   final _formKey = GlobalKey<FormBuilderState>();
 
-  NutzerEditScreen({required this.id, Key? key}) : super(key: key) {
+  AngebotEditScreen({required this.id, Key? key}) : super(key: key) {
     service = UniGoService();
   }
 
@@ -26,7 +28,7 @@ class NutzerEditScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Nutzer Edit Screen"),
+        title: Text("Angebot Edit Screen"),
       ),
       body: Container(
         child: Column(
@@ -66,7 +68,7 @@ class NutzerEditScreen extends StatelessWidget {
       // enabled: false,
       onChanged: () {
         _formKey.currentState!.save();
-        debugPrint(_formKey.currentState!.value.toString());
+        //debugPrint(_formKey.currentState!.value.toString());
       },
       autovalidateMode: AutovalidateMode.disabled,
       skipDisabled: true,
@@ -76,50 +78,51 @@ class NutzerEditScreen extends StatelessWidget {
           children: <Widget>[
             const SizedBox(height: 16),
             _buildFormTextField(
-              name: 'firstname',
-              labelText: 'Vorname',
-              value: nutzer.vorname,
+              name: 'startort',
+              labelText: 'Startort',
+              value: angebot.startort,
             ),
             const SizedBox(height: 16),
             _buildFormTextField(
-              name: 'lastname',
-              labelText: 'Nachname',
-              value: nutzer.nachname,
+              name: 'zielort',
+              labelText: 'Zielort',
+              value: angebot.zielort,
             ),
             const SizedBox(height: 16),
             _buildFormTextField(
-              name: 'email',
-              labelText: 'Email',
-              value: nutzer.email,
+              name: 'uhrzeit',
+              labelText: 'Uhrzeit',
+              value: angebot.uhrzeit,
             ),
             const SizedBox(height: 16),
             _buildFormTextField(
-              name: 'password',
-              labelText: 'Passwort',
-              value: nutzer.passwort,
+              name: 'datum',
+              labelText: 'Datum',
+              value: "${angebot.datum}",
             ),
             const SizedBox(height: 16),
-            _buildFormTextField(
-              name: 'geburtdatum',
-              labelText: 'Geburtsdatum',
-              value: nutzer.geburtsdatum,
+            _buildFormNumberField(
+              name: 'freiplaetze',
+              labelText: 'Freie Plätze',
+              value: angebot.freiplaetze,
             ),
             const SizedBox(height: 16),
             _SubmitButton(
               text: "Speichern",
               callback: () async {
-                Nutzer data = Nutzer(
-                  id: nutzer.id,
-                  vorname: _formKey.currentState!.value['firstname'],
-                  nachname: _formKey.currentState!.value['lastname'],
-                  geburtsdatum: _formKey.currentState!.value['geburtdatum'],
-                  passwort: _formKey.currentState!.value['password'],
-                  email: _formKey.currentState!.value['email'],
-                  hasprofile: nutzer.hasprofile,
+                Angebot data = Angebot(
+                  id: angebot.id,
+                  startort: _formKey.currentState!.value['startort'],
+                  zielort: _formKey.currentState!.value['zielort'],
+                  freiplaetze: int.parse(_formKey.currentState!.value['freiplaetze']),
+                  uhrzeit: _formKey.currentState!.value['uhrzeit'],
+                  datum: DateTime.parse(_formKey.currentState!.value['datum']),
+                  hasprofile: []
                 );
 
                 bool result =
-                    await service.updateNutzerById(id: nutzer.id, data: data);
+                    await service.updateAngebotById(id: angebot.id, data: data);
+                print (result);
 
                 // es wurde etwas verändert
                 if (result) {
@@ -211,12 +214,13 @@ class NutzerEditScreen extends StatelessWidget {
   }
 
   Widget _buildFormNumberField(
-      {required String name, required String labelText}) {
+      {required String name, required String labelText, required int value}) {
     return Container(
       width: 250,
       child: FormBuilderTextField(
         autovalidateMode: AutovalidateMode.disabled,
         name: name,
+        initialValue: "${value}",
         decoration: InputDecoration(
           labelText: labelText,
           border: OutlineInputBorder(
@@ -241,10 +245,10 @@ class NutzerEditScreen extends StatelessWidget {
 
   Future<bool> _loadUser() async {
     try {
-      nutzer = await service.getNutzerById(id: this.id);
+      angebot = await service.getAngebotById(id: this.id);
       return true;
     } on ObjectNotFoundException catch (e) {
-      nutzer = Nutzer.empty();
+      angebot = Angebot.empty(datum: DateTime.now());
       return false;
     }
   }

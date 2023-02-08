@@ -40,14 +40,15 @@ class UGBackendServiceProvider {
     }
   }
 
-  static Future<bool> createObject<T>({
+  static Future<RT> createObject<RT, T>({
     required T data,
     required Function(T) toJson,
     required String resourcePath,
   }) async {
-    var url = Uri.https(host, '${apiPath}/${resourcePath}');
+    var url = Uri.https(host, '${apiPath}/${resourcePath}.json');
     String json = toJson(data);
     print(json);
+    print(url);
 
     http.Response resonse = await http.post(
       url,
@@ -57,9 +58,9 @@ class UGBackendServiceProvider {
       body: json,
     );
     if (resonse.statusCode == 201) {
-      return true;
+      return true as RT;
     }
-    return false;
+    return false as RT;
   }
 
   static Future<RT> updateObjectById<RT, T>({

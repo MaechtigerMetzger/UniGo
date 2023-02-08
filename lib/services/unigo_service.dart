@@ -1,78 +1,13 @@
 import 'package:unigo_prototyp/services/ugbackend_service_provider.dart';
 
-import 'model/angebot.dart';
-import 'model/nutzer.dart';
 import 'model/object_not_found_exception.dart';
 
 class UniGoService {
-  /* Angebot */
-
-  Future<List<Angebot>> getAngebotList() async {
-    return wrapper<List<Angebot>, Angebot>(
-      method: "getList",
-      id: -1,
-      data: Angebot.empty(datum: DateTime.now()),
-      initRTVal: [],
-      resourcePath: "angebot",
-      objectFromJson: angebotFromJson,
-      listFromJson: angebotListFromJson,
-      objectToJson: angebotToJson,
-    );
-  }
-
-  /* Nutzer */
-
-  Future<List<Nutzer>> getNutzerList() async {
-    return wrapper<List<Nutzer>, Nutzer>(
-      method: "getList",
-      id: -1,
-      data: Nutzer.empty(),
-      initRTVal: [],
-      resourcePath: "nutzer",
-      objectFromJson: nutzerFromJson,
-      listFromJson: nutzerListFromJson,
-      objectToJson: nutzerToJson,
-    );
-  }
-
-  Future<Nutzer> getNutzerById({required int id}) async {
-    return wrapper<Nutzer, Nutzer>(
-      method: "getObjectById",
-      id: id,
-      data: Nutzer.empty(),
-      initRTVal: Nutzer.empty(),
-      resourcePath: "nutzer",
-      objectFromJson: nutzerFromJson,
-      listFromJson: nutzerListFromJson,
-      objectToJson: nutzerToJson,
-    );
-  }
-
-  Future<bool> updateNutzerById({required int id, required Nutzer data}) async {
-    return wrapper<bool, Nutzer>(
-      method: "updateObjectById",
-      id: id,
-      data: data,
-      initRTVal: false,
-      resourcePath: "nutzer",
-      objectFromJson: nutzerFromJson,
-      listFromJson: nutzerListFromJson,
-      objectToJson: nutzerToJson,
-    );
-  }
-
-  Future<bool> deleteNutzerById({required int id}) async {
-    return wrapper<bool, Nutzer>(
-      method: "deleteObjectById",
-      id: id,
-      data: Nutzer.empty(),
-      initRTVal: false,
-      resourcePath: "nutzer",
-      objectFromJson: nutzerFromJson,
-      listFromJson: nutzerListFromJson,
-      objectToJson: nutzerToJson,
-    );
-  }
+  final String methodGetList = "getList";
+  final String methodGetObjectById = "getObjectById";
+  final String methodUpdateObjectById = "updateObjectById";
+  final String methodCreateObjectById = "createObjectById";
+  final String methodDeleteObjectById = "deleteObjectById";
 
   // Hier alle CRUD Operationen
 
@@ -112,6 +47,15 @@ class UniGoService {
           }
 
           return result[0] as RT;
+        }
+      case "createObjectById":
+        {
+          RT result = await UGBackendServiceProvider.createObject<RT, T>(
+            data: data,
+            toJson: objectToJson,
+            resourcePath: resourcePath,
+          );
+          return result;
         }
       case "updateObjectById":
         {

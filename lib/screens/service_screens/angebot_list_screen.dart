@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:unigo_prototyp/screens/service_screens/nutzer_edit_screen.dart';
+import 'package:unigo_prototyp/screens/service_screens/angebot_edit_screen.dart';
 import 'package:unigo_prototyp/services/controller/ug_state_controller.dart';
-import 'package:unigo_prototyp/services/ugbackend_service_provider.dart';
+import 'package:unigo_prototyp/services/extensions/unigo_service_angebot_extension.dart';
 import 'package:unigo_prototyp/services/unigo_service.dart';
 
 import '../../services/model/angebot.dart';
-import '../../services/model/nutzer.dart';
 
 class AngebotListScreen extends StatefulWidget {
   const AngebotListScreen({Key? key}) : super(key: key);
@@ -37,20 +36,22 @@ class _AngebotListScreenState extends State<AngebotListScreen> {
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
             Angebot angebot = Angebot(
-              id: 0,
-              datum: DateTime.now(),
-              uhrzeit: "00:00:00",
-              freiplaetze: 0,
-              startort: "hier",
-              zielort: "da",
-              hasprofile: []
-            );
+                id: 0,
+                datum: DateTime.now(),
+                uhrzeit: "00:00:00",
+                freiplaetze: 0,
+                startort: "hier",
+                zielort: "da",
+                hasprofile: []);
 
+            /*
             bool result = await UGBackendServiceProvider.createObject<Angebot>(
               data: angebot,
               toJson: angebotToJson,
               resourcePath: "angebot.json",
             );
+
+             */
 
             setState(() {
               // update der Liste
@@ -151,7 +152,8 @@ class _AngebotListScreenState extends State<AngebotListScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Align(
                 alignment: Alignment.topCenter,
-                child: Text("${angebot.datum} ${angebot.freiplaetze}"),
+                child: Text("${angebot.startort} - ${angebot.zielort}"
+                    " am ${angebot.datum}, Plätze: ${angebot.freiplaetze}"),
               ),
             ),
           ),
@@ -167,7 +169,7 @@ class _AngebotListScreenState extends State<AngebotListScreen> {
                       onPressed: () async {
                         // TODO Logik anpassen
                         bool result =
-                            await service.deleteNutzerById(id: angebot.id);
+                            await service.deleteAngebotById(id: angebot.id);
                         print(angebot.id);
                         setState(() {});
                       },
@@ -179,7 +181,7 @@ class _AngebotListScreenState extends State<AngebotListScreen> {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) =>
-                                NutzerEditScreen(id: angebot.id),
+                                AngebotEditScreen(id: angebot.id),
                           ),
                         );
                       },
