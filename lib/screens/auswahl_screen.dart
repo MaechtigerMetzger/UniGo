@@ -5,6 +5,7 @@ import 'package:unigo_prototyp/screens/fahrten/fahrt_hinzufuegen_screen.dart';
 import 'package:unigo_prototyp/screens/home_screen.dart';
 import 'package:unigo_prototyp/screens/login_screen.dart';
 import 'package:unigo_prototyp/screens/profil/profile_screen.dart';
+import 'package:unigo_prototyp/screens/punkte_screen.dart';
 import 'package:unigo_prototyp/screens/registrieren_screen.dart';
 import 'package:unigo_prototyp/screens/service_screens/nutzer_list_screen.dart';
 import 'package:unigo_prototyp/screens/settings_screen.dart';
@@ -62,6 +63,8 @@ class AuswahlScreen extends StatelessWidget {
           _buildRouteButton(context, "Authentifizierung", AuthentifizierungScreen()),
           _spacer(),
           _buildRouteButton(context, "Datenschutz",DatenschutzScreen()),
+          _spacer(),
+          _buildRouteButton(context, "Punkte",PunkteScreen()),
         ],
       ),
     ));
