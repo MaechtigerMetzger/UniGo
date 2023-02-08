@@ -33,6 +33,16 @@ class Angebot {
   int freiplaetze;
   List<int> hasprofile;
 
+  Angebot.empty({
+    this.id = 0,
+    this.startort = "startort",
+    this.zielort = "zielort",
+    required this.datum,
+    this.uhrzeit = "uhrzeit",
+    this.freiplaetze = 0,
+    this.hasprofile = const [],
+  });
+
   factory Angebot.fromJson(Map<String, dynamic> json) => Angebot(
         id: json["id"],
         startort: json["startort"],
