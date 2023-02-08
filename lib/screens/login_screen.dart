@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:unigo_prototyp/screens/home_screen.dart';
+import 'package:unigo_prototyp/screens/registrieren_screen.dart';
 import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -22,11 +23,7 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               height: 70,
             ),
-            _buildEingabe("E-Mail Adresse"),
-            SizedBox(
-              height: 50,
-            ),
-            _buildEingabe("Passwort"),
+            _buildEingabe(),
             SizedBox(
               height: 8,
             ),
@@ -52,10 +49,19 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               height: 8,
             ),
-            Text(
-              "Registrieren",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RegistrierenScreen(),
+                    ));
+              },
+              child: Text(
+                "Registrieren",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             SizedBox(
@@ -87,19 +93,53 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Container _buildEingabe(String text) {
+  Container _buildEingabe() {
     return Container(
-      width: 250,
-      height: 32,
+      width: 350,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: Colors.black,
-          width: 1,
-        ),
-        color: Colors.white,
       ),
-      child: Center(child: Text(text)),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(
+              height: 5,
+            ),
+            TextFormField(
+              textAlign: TextAlign.center,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.teal),
+                ),
+                hintText: 'E-Mail',
+                isDense: true, // Added this
+                contentPadding: EdgeInsets.all(15),
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            TextFormField(
+              textAlign: TextAlign.center,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.teal),
+                ),
+                hintText: 'Passwort',
+                isDense: true, // Added this
+                contentPadding: EdgeInsets.all(15),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -110,7 +150,7 @@ class LoginScreen extends StatelessWidget {
         child: Text(
           "Anmelden",
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 27,
           ),
         ),
       ),
