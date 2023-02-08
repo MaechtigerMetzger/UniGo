@@ -9,7 +9,7 @@ class UGBackendServiceProvider {
 
   /* HELPER */
 
-  static Future<List<T>> getObjectList<T>({
+  static Future<RT> getObjectList<RT, T>({
     required String resourcePath,
     required Function(String) listFromJson,
   }) async {
@@ -17,14 +17,14 @@ class UGBackendServiceProvider {
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
-      List<T> data = listFromJson(response.body);
+      RT data = listFromJson(response.body);
       return (data);
     } else {
-      return [];
+      return [] as RT;
     }
   }
 
-  static Future<List<T>> getObjectById<T>({
+  static Future<RT> getObjectById<RT, T>({
     required int id,
     required String resourcePath,
     required Function(String) objectFromJson,
@@ -34,9 +34,9 @@ class UGBackendServiceProvider {
 
     if (response.statusCode == 200) {
       T object = objectFromJson(response.body);
-      return ([object]);
+      return ([object] as RT);
     } else {
-      return [];
+      return [] as RT;
     }
   }
 
@@ -61,7 +61,7 @@ class UGBackendServiceProvider {
     return false;
   }
 
-  static Future<bool> updateObjectById<T>({
+  static Future<RT> updateObjectById<RT, T>({
     required int id,
     required T data,
     required Function(T) objectToJson,
@@ -78,12 +78,12 @@ class UGBackendServiceProvider {
       body: json,
     );
     if (resonse.statusCode == 200) {
-      return true;
+      return true as RT;
     }
-    return false;
+    return false as RT;
   }
 
-  static Future<bool> deleteObjectById({
+  static Future<RT> deleteObjectById<RT>({
     required int id,
     required String resourcePath,
   }) async {
@@ -93,8 +93,8 @@ class UGBackendServiceProvider {
       url,
     );
     if (resonse.statusCode == 204) {
-      return true;
+      return true as RT;
     }
-    return false;
+    return false as RT;
   }
 }
