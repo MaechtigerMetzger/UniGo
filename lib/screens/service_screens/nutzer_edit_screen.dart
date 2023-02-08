@@ -104,11 +104,6 @@ class NutzerEditScreen extends StatelessWidget {
               value: nutzer.geburtsdatum,
             ),
             const SizedBox(height: 16),
-            _buildFormNumberField(
-              name: 'savedscore',
-              labelText: 'Saved score',
-            ),
-            const SizedBox(height: 16),
             _SubmitButton(
               text: "Speichern",
               callback: () async {
