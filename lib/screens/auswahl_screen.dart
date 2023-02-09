@@ -23,8 +23,6 @@ import 'fahrt_suche_screen.dart';
 import 'fahrten_übersicht_screen.dart';
 
 class AuswahlScreen extends StatelessWidget {
-  //UGStateController _controller = Get.put(UGStateController());
-
   AuswahlScreen({Key? key}) : super(key: key);
 
   @override

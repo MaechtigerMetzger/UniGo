@@ -5,7 +5,6 @@ import 'package:unigo_prototyp/services/controller/ug_state_controller.dart';
 import 'app_config.dart';
 
 class PersitenceManager {
-  UGStateController _controller = Get.find();
   final String store_key = "appconfig";
 
   Future<AppConfig> loadStore() async {
