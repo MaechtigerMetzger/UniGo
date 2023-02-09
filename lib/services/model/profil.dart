@@ -35,6 +35,17 @@ class Profil {
   String fahrzeug;
   int kmgefahren;
 
+  Profil.empty({
+    this.id = 0,
+    this.vorname = "vorname",
+    this.beschreibung = "beschreibung",
+    this.tier = "tier",
+    this.raucher = "raucher",
+    this.bewertung = "bewertung",
+    this.fahrzeug = "fahrzeug",
+    this.kmgefahren = 0,
+  });
+
   factory Profil.fromJson(Map<String, dynamic> json) => Profil(
         id: json["id"],
         vorname: json["vorname"],

@@ -2,8 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'screens/auswahl_screen.dart';
+import 'package:unigo_prototyp/screens/service_screens/pre_loading_screen.dart';
 
 // Design in
 // https://www.figma.com/file/KG73Ctua7GSmwbwu3uWXvG/Prototyp-1?node-id=0%3A1&t=qwvKkf7XLdVeYxtk-0
@@ -30,11 +29,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       scrollBehavior: MyCustomScrollBehavior(),
-      title: 'Flutter Demo',
+      title: 'UniGo Preview',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AuswahlScreen(),
+      home: PreLoadingScreen(),
     );
   }
 }

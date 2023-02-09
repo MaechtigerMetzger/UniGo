@@ -29,6 +29,14 @@ class Chat {
   List<int> mitfahrer;
   List<int> messages;
 
+  Chat.empty({
+    this.id = 0,
+    this.name = "name",
+    this.fahrer = const [],
+    this.mitfahrer = const [],
+    this.messages = const [],
+  });
+
   factory Chat.fromJson(Map<String, dynamic> json) => Chat(
         id: json["id"],
         name: json["name"],

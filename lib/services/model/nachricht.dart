@@ -27,6 +27,13 @@ class Nachricht {
   DateTime datumZeit;
   List<int> inchat;
 
+  Nachricht.empty({
+    this.id = 0,
+    this.inhalt = "inhalt",
+    required this.datumZeit,
+    this.inchat = const [],
+  });
+
   factory Nachricht.fromJson(Map<String, dynamic> json) => Nachricht(
         id: json["id"],
         inhalt: json["inhalt"],

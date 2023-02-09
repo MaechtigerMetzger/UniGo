@@ -4,11 +4,9 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:unigo_prototyp/services/controller/ug_state_controller.dart';
 import 'package:unigo_prototyp/services/extensions/unigo_service_angebot_extension.dart';
-import 'package:unigo_prototyp/services/extensions/unigo_service_nutzer_extension.dart';
 import 'package:unigo_prototyp/services/model/object_not_found_exception.dart';
 
 import '../../services/model/angebot.dart';
-import '../../services/model/nutzer.dart';
 import '../../services/unigo_service.dart';
 
 class AngebotEditScreen extends StatelessWidget {

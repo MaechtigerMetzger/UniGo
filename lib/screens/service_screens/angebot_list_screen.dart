@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:unigo_prototyp/screens/service_screens/angebot_edit_screen.dart';
+import 'package:unigo_prototyp/screens/service_screens/service_widgets/list_card_widget.dart';
 import 'package:unigo_prototyp/services/controller/ug_state_controller.dart';
 import 'package:unigo_prototyp/services/extensions/unigo_service_angebot_extension.dart';
 import 'package:unigo_prototyp/services/unigo_service.dart';
@@ -107,19 +108,6 @@ class _AngebotListScreenState extends State<AngebotListScreen> {
     );
   }
 
-  Widget _buildHeader() {
-    return Container(
-      height: 70,
-      decoration: BoxDecoration(
-        color: Colors.grey,
-        borderRadius: BorderRadius.only(
-          bottomRight: Radius.circular(20),
-          bottomLeft: Radius.circular(20),
-        ),
-      ),
-    );
-  }
-
   Widget _buildListView(AsyncSnapshot<bool> snapshot) {
     return Expanded(
       child: RefreshIndicator(
@@ -130,69 +118,25 @@ class _AngebotListScreenState extends State<AngebotListScreen> {
           itemCount: angebote.length,
           itemBuilder: (context, index) {
             final angebot = angebote[index];
-            return _buildCard(angebot);
+            //return _buildCard(angebot);
+            return ListCardWidget<Angebot>(
+              object: angebot,
+              content: Text("${angebot.startort} - ${angebot.zielort}"),
+              edit_callback: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => AngebotEditScreen(id: angebot.id),
+                  ),
+                );
+              },
+              delete_callback: () async {
+                bool result = await service.deleteAngebotById(id: angebot.id);
+                print(angebot.id);
+                setState(() {});
+              },
+            );
           },
         ),
-      ),
-    );
-  }
-
-  Widget _buildCard(Angebot angebot) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 16),
-      child: Stack(
-        children: [
-          Container(
-            height: 70,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Color.fromARGB(255, 162, 219, 156),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Text("${angebot.startort} - ${angebot.zielort}"
-                    " am ${angebot.datum}, Plätze: ${angebot.freiplaetze}"),
-              ),
-            ),
-          ),
-          Container(
-            height: 70,
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: Container(
-                width: 80,
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () async {
-                        // TODO Logik anpassen
-                        bool result =
-                            await service.deleteAngebotById(id: angebot.id);
-                        print(angebot.id);
-                        setState(() {});
-                      },
-                      icon: Icon(Icons.delete_outline_outlined),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        // TODO Logic anpassen
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                AngebotEditScreen(id: angebot.id),
-                          ),
-                        );
-                      },
-                      icon: Icon(Icons.edit),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

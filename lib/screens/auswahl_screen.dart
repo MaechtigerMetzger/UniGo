@@ -25,8 +25,6 @@ import 'package:unigo_prototyp/screens/Divers/email_screen.dart';
 import 'package:unigo_prototyp/screens/Divers/faq_screen.dart';
 
 class AuswahlScreen extends StatelessWidget {
-  UGStateController _controller = Get.put(UGStateController());
-
   AuswahlScreen({Key? key}) : super(key: key);
 
   @override
@@ -39,7 +37,8 @@ class AuswahlScreen extends StatelessWidget {
           children: [
             _buildRouteButton(context, "NutzerListScreen", NutzerListScreen()),
             _spacer(),
-            _buildRouteButton(context, "AngebotListScreen", AngebotListScreen()),
+            _buildRouteButton(
+                context, "AngebotListScreen", AngebotListScreen()),
             _spacer(),
             _buildRouteButton(context, "HomeScreen", HomeScreen()),
             _spacer(),
@@ -47,13 +46,16 @@ class AuswahlScreen extends StatelessWidget {
             _spacer(),
             _buildRouteButton(context, "Login Screen", LoginScreen()),
             _spacer(),
-            _buildRouteButton(context, "Registrieren Screen", RegistrierenScreen()),
+            _buildRouteButton(
+                context, "Registrieren Screen", RegistrierenScreen()),
             _spacer(),
-            _buildRouteButton(context, "Fahrt hinzufügen", FahrtHinzufuegenScreen()),
+            _buildRouteButton(
+                context, "Fahrt hinzufügen", FahrtHinzufuegenScreen()),
             _spacer(),
             _buildRouteButton(context, "Profil", ProfileScreen()),
             _spacer(),
-            _buildRouteButton(context, "Fahrt HinzufügenI", FahrtHinzufuegenScreenI()),
+            _buildRouteButton(
+                context, "Fahrt HinzufügenI", FahrtHinzufuegenScreenI()),
             _spacer(),
             _buildRouteButton(context, "Fahrt Suchen", FahrtSuchen()),
             _spacer(),
@@ -67,18 +69,19 @@ class AuswahlScreen extends StatelessWidget {
             _spacer(),
             _buildRouteButton(context, "Cookies", CookiesScreen()),
             _spacer(),
-            _buildRouteButton(context, "Authentifizierung", AuthentifizierungScreen()),
+            _buildRouteButton(
+                context, "Authentifizierung", AuthentifizierungScreen()),
             _spacer(),
-            _buildRouteButton(context, "Datenschutz",DatenschutzScreen()),
+            _buildRouteButton(context, "Datenschutz", DatenschutzScreen()),
             _spacer(),
-            _buildRouteButton(context, "Punkte",PunkteScreen()),
+            _buildRouteButton(context, "Punkte", PunkteScreen()),
           ],
         ),
       ),
     ));
   }
 
-  SizedBox _spacer() => SizedBox(height:10);
+  SizedBox _spacer() => SizedBox(height: 10);
 
   ElevatedButton _buildRouteButton(
       BuildContext context, String text, Widget widget) {
