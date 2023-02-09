@@ -7,13 +7,14 @@ class UGStateController extends GetxController {
   // einfacher Ansatz, um auf (beliebige) Veränderungen zu reagieren
   var somethingChanged = 0.obs;
   late AppConfig appConfig;
+  bool appConfigLoaded = false; // wenn geladen/wenn gespeichert
 
   PersitenceManager persistenceManager = PersitenceManager();
 
   @override
   void onInit() {
     super.onInit();
-    loadStore();
+    //loadStore();
   }
 
   /* global change */
@@ -24,11 +25,17 @@ class UGStateController extends GetxController {
 
   /* persistence */
 
-  void loadStore() async {
-    appConfig = await persistenceManager.loadStore();
+  void loadStore() {
+    appConfigLoaded = false;
+    persistenceManager.loadStore().then((value) {
+      appConfig = value;
+      appConfigLoaded = true;
+    });
   }
 
-  void saveStore() async {
-    bool _ = await persistenceManager.saveStore(appConfig);
+  void saveStore() {
+    persistenceManager
+        .saveStore(appConfig)
+        .then((value) => appConfigLoaded = value);
   }
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:unigo_prototyp/screens/Divers/email_screen.dart';
+import 'package:unigo_prototyp/screens/Divers/faq_buchung_screen.dart';
+import 'package:unigo_prototyp/screens/Divers/faq_screen.dart';
 import 'package:unigo_prototyp/screens/dialog_test_screen.dart';
 import 'package:unigo_prototyp/screens/fahrten/fahrt_hinzufuegen_screen.dart';
 import 'package:unigo_prototyp/screens/home_screen.dart';
@@ -9,22 +12,19 @@ import 'package:unigo_prototyp/screens/punkte_screen.dart';
 import 'package:unigo_prototyp/screens/registrieren_screen.dart';
 import 'package:unigo_prototyp/screens/service_screens/angebot_list_screen.dart';
 import 'package:unigo_prototyp/screens/service_screens/nutzer_list_screen.dart';
-import 'package:unigo_prototyp/screens/settings_screen.dart';
-import 'package:unigo_prototyp/screens/settings/cookies_screen.dart';
 import 'package:unigo_prototyp/screens/settings/authentifizierung_screen.dart';
+import 'package:unigo_prototyp/screens/settings/cookies_screen.dart';
 import 'package:unigo_prototyp/screens/settings/datenschutz_screen.dart';
-import 'package:unigo_prototyp/screens/Divers/faq_buchung_screen.dart';
-import 'package:unigo_prototyp/services/controller/ug_state_controller.dart';
 import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
 
+import '../services/controller/ug_state_controller.dart';
 import 'fahrt_hinzufuegen_screen.dart';
 import 'fahrt_suche_screen.dart';
 import 'fahrten_übersicht_screen.dart';
 
-import 'package:unigo_prototyp/screens/Divers/email_screen.dart';
-import 'package:unigo_prototyp/screens/Divers/faq_screen.dart';
-
 class AuswahlScreen extends StatelessWidget {
+  //UGStateController _controller = Get.put(UGStateController());
+
   AuswahlScreen({Key? key}) : super(key: key);
 
   @override

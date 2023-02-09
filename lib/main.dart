@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:unigo_prototyp/screens/service_screens/pre_loading_screen.dart';
+import 'package:unigo_prototyp/screens/auswahl_screen.dart';
 
 // Design in
 // https://www.figma.com/file/KG73Ctua7GSmwbwu3uWXvG/Prototyp-1?node-id=0%3A1&t=qwvKkf7XLdVeYxtk-0
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: PreLoadingScreen(),
+      home: AuswahlScreen(),
     );
   }
 }

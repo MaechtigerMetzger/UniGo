@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:unigo_prototyp/screens/service_screens/nutzer_edit_screen.dart';
 import 'package:unigo_prototyp/services/controller/ug_state_controller.dart';
 import 'package:unigo_prototyp/services/extensions/unigo_service_nutzer_extension.dart';
-import 'package:unigo_prototyp/services/ugbackend_service_provider.dart';
 import 'package:unigo_prototyp/services/unigo_service.dart';
 
 import '../../services/model/nutzer.dart';
