@@ -4,7 +4,7 @@ class UGBackendServiceProvider {
   //static String host = "localhost:8000";
   //static String host = "10.0.2.2:8000";
   //static String host = "193.174.29.13";
-  static String host = "medsrv.informatik.hs-fulda.de";
+  static String host = "unigo.informatik.hs-fulda.de";
   static String apiPath = "/ugbackend/api/v1";
 
   /* HELPER */

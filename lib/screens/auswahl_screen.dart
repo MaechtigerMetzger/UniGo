@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:unigo_prototyp/screens/Divers/email_screen.dart';
 import 'package:unigo_prototyp/screens/Divers/faq_buchung_screen.dart';
 import 'package:unigo_prototyp/screens/Divers/faq_screen.dart';
@@ -17,7 +16,6 @@ import 'package:unigo_prototyp/screens/settings/cookies_screen.dart';
 import 'package:unigo_prototyp/screens/settings/datenschutz_screen.dart';
 import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
 
-import '../services/controller/ug_state_controller.dart';
 import 'fahrt_hinzufuegen_screen.dart';
 import 'fahrt_suche_screen.dart';
 import 'fahrten_übersicht_screen.dart';
