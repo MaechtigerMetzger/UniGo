@@ -3,22 +3,26 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class SVGDynamicScaffoldWidget extends StatefulWidget {
   Widget drawer;
+  Widget bottomNavigationBar;
+  bool showBottonNavigationBar = false;
   PreferredSizeWidget appbar;
   Widget body;
   Widget fab;
   bool showFab = false;
 
   double maxWidth = 480;
-  double centerColumnWidth = 390;  // iPhone 12 Pro
+  double centerColumnWidth = 390; // iPhone 12 Pro
 
   bool showDrawer = true;
   bool showAppbar = true;
 
   SVGDynamicScaffoldWidget({
     required this.drawer,
+    required this.bottomNavigationBar,
     required this.appbar,
     required this.body,
     required this.fab,
+    this.showBottonNavigationBar = false,
     this.showFab = false,
     this.showAppbar = true,
     this.maxWidth = 600,
@@ -50,6 +54,8 @@ class _SVGDynamicScaffoldWidgetState extends State<SVGDynamicScaffoldWidget> {
       child: Scaffold(
         appBar: widget.showAppbar ? widget.appbar : null,
         endDrawer: widget.showDrawer ? widget.drawer : null,
+        bottomNavigationBar:
+            widget.showBottonNavigationBar ? widget.bottomNavigationBar : null,
         // body: widget.body,
         body: Stack(
           children: [
@@ -84,7 +90,7 @@ class _SVGDynamicScaffoldWidgetState extends State<SVGDynamicScaffoldWidget> {
           ),
           Expanded(
             child: Container(
-              color: Colors.amberAccent[200],
+              color: Colors.teal[200],
             ),
           ),
         ],
