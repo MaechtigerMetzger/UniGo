@@ -44,12 +44,12 @@ extension ServiceNutzerExtension on UniGoService {
     );
   }
 
-  Future<bool> createNutzerById({required int id, required Nutzer data}) async {
-    return wrapper<bool, Nutzer>(
+  Future<Nutzer> createNutzerById({required int id, required Nutzer data}) async {
+    return wrapper<Nutzer, Nutzer>(
       method: methodCreateObjectById,
       id: id,
       data: data,
-      initRTVal: false,
+      initRTVal: Nutzer.empty(),
       resourcePath: "nutzer",
       objectFromJson: nutzerFromJson,
       listFromJson: nutzerListFromJson,

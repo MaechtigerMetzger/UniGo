@@ -45,14 +45,7 @@ class _AngebotListScreenState extends State<AngebotListScreen> {
                 zielort: "da",
                 hasprofile: []);
 
-            /*
-            bool result = await UGBackendServiceProvider.createObject<Angebot>(
-              data: angebot,
-              toJson: angebotToJson,
-              resourcePath: "angebot.json",
-            );
-
-             */
+            bool result = await service.createAngebotById(id: 0, data: angebot);
 
             setState(() {
               // update der Liste

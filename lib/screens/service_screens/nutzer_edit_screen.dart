@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -110,7 +112,7 @@ class NutzerEditScreen extends StatelessWidget {
               callback: () async {
                 Nutzer data = Nutzer(
                   id: nutzer.id,
-                  vorname: _formKey.currentState!.value['firstname'],
+                  vorname: _utf8encode(_formKey.currentState!.value['firstname']),
                   nachname: _formKey.currentState!.value['lastname'],
                   geburtsdatum: _formKey.currentState!.value['geburtdatum'],
                   passwort: _formKey.currentState!.value['password'],
@@ -247,5 +249,9 @@ class NutzerEditScreen extends StatelessWidget {
       nutzer = Nutzer.empty();
       return false;
     }
+  }
+
+  String _utf8encode(String value) {
+    return (utf8.decode(utf8.encode(value)));
   }
 }

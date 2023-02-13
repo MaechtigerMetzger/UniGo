@@ -45,7 +45,7 @@ class _NutzerListScreenState extends State<NutzerListScreen> {
               email: "h.p@ligusterweg.hex",
             );
 
-            bool result = await service.createNutzerById(id: 0, data: nutzer);
+            Nutzer result = await service.createNutzerById(id: 0, data: nutzer);
             print (result);
 
             setState(() {

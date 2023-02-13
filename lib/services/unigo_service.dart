@@ -52,7 +52,8 @@ class UniGoService {
         {
           RT result = await UGBackendServiceProvider.createObject<RT, T>(
             data: data,
-            toJson: objectToJson,
+            objectToJson: objectToJson,
+            objectFromJson: objectFromJson,
             resourcePath: resourcePath,
           );
           return result;
