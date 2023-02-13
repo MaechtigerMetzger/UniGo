@@ -8,6 +8,10 @@ class UGBackendServiceProvider {
   //static String host = "193.174.29.13";
   static String host = "unigo.informatik.hs-fulda.de";
   static String apiPath = "/ugbackend/api/v1";
+  static String token = "d4b07361a2605d8255c3bf3d706615a911c843bb";
+  static var headers = {
+    'Authorization': 'Token d4b07361a2605d8255c3bf3d706615a911c843bb'
+  };
 
   /* HELPER */
 
@@ -16,12 +20,16 @@ class UGBackendServiceProvider {
     required Function(String) listFromJson,
   }) async {
     var url = Uri.https(host, '${apiPath}/${resourcePath}.json');
-    var response = await http.get(url);
+    var response = await http.get(
+      url,
+      headers: headers,
+    );
     String resUTF8 = utf8.decode(response.bodyBytes);
+    print(response.statusCode);
 
     if (response.statusCode == 200) {
       RT data = listFromJson(resUTF8);
-      return (data);
+      return (data as RT);
     } else {
       return [] as RT;
     }
@@ -33,7 +41,10 @@ class UGBackendServiceProvider {
     required Function(String) objectFromJson,
   }) async {
     var url = Uri.https(host, '${apiPath}/${resourcePath}/${id}.json');
-    var response = await http.get(url);
+    var response = await http.get(
+      url,
+      headers: headers,
+    );
     print(response.headers);
     String resUTF8 = utf8.decode(response.bodyBytes);
 
@@ -59,6 +70,7 @@ class UGBackendServiceProvider {
       url,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Token $token',
       },
       body: json,
     );
@@ -81,6 +93,7 @@ class UGBackendServiceProvider {
       url,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Token $token',
       },
       body: json,
     );
@@ -98,6 +111,7 @@ class UGBackendServiceProvider {
 
     http.Response resonse = await http.delete(
       url,
+      headers: headers,
     );
     if (resonse.statusCode == 204) {
       return true as RT;

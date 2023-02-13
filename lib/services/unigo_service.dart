@@ -31,7 +31,7 @@ class UniGoService {
             listFromJson: listFromJson,
           );
 
-          return result;
+          return result as RT;
         }
       case "getObjectById":
         {
