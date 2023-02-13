@@ -36,6 +36,7 @@ class SVGDynamicScaffoldWidget extends StatefulWidget {
 }
 
 class _SVGDynamicScaffoldWidgetState extends State<SVGDynamicScaffoldWidget> {
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(

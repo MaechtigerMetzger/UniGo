@@ -6,6 +6,7 @@ import '../persistence/persistence_manager.dart';
 class UGStateController extends GetxController {
   // einfacher Ansatz, um auf (beliebige) Veränderungen zu reagieren
   var somethingChanged = 0.obs;
+  var selectedPage = 0.obs; // selected Pag in BottomNavigationBar
   late AppConfig appConfig;
   bool appConfigLoaded = false; // wenn geladen/wenn gespeichert
 
