@@ -11,6 +11,7 @@ import 'package:unigo_prototyp/screens/punkte_screen.dart';
 import 'package:unigo_prototyp/screens/registrieren_screen.dart';
 import 'package:unigo_prototyp/screens/service_screens/angebot_list_screen.dart';
 import 'package:unigo_prototyp/screens/service_screens/nutzer_list_screen.dart';
+import 'package:unigo_prototyp/screens/service_screens/prototyp_dummies/dummy_home_screen.dart';
 import 'package:unigo_prototyp/screens/settings/authentifizierung_screen.dart';
 import 'package:unigo_prototyp/screens/settings/cookies_screen.dart';
 import 'package:unigo_prototyp/screens/settings/datenschutz_screen.dart';
@@ -31,6 +32,8 @@ class AuswahlScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            _buildRouteButton(context, "DummyHomeScreen", DummyHomeScreen()),
+            _spacer(),
             _buildRouteButton(context, "NutzerListScreen", NutzerListScreen()),
             _spacer(),
             _buildRouteButton(
