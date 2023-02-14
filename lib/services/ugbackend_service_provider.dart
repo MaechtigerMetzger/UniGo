@@ -20,6 +20,7 @@ class UGBackendServiceProvider {
     required Function(String) listFromJson,
   }) async {
     var url = Uri.https(host, '${apiPath}/${resourcePath}.json');
+    print (url);
     var response = await http.get(
       url,
       headers: headers,
