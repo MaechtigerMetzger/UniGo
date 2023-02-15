@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unigo_prototyp/screens/service_screens/prototyp_dummies/dummy_login_screen.dart';
 import 'package:unigo_prototyp/screens/service_screens/prototyp_dummies/widgets/dummy_custom_round_button.dart';
 import 'package:unigo_prototyp/screens/service_screens/prototyp_dummies/widgets/dummy_svg_dynamic_scaffold_widget.dart';
 import 'package:unigo_prototyp/screens/service_screens/prototyp_dummies/widgets/dummy_unigo_bottom_navigation_bar.dart';
@@ -25,8 +26,15 @@ class DummyHomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomRoundButton(
-              text: "Suchen",
-              callback: () {},
+              text: "Zum Login",
+              callback: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DummyLoginScreen(),
+                  ),
+                );
+              },
               width: 150,
             ),
           ],

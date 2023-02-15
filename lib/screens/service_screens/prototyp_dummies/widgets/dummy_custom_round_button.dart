@@ -10,7 +10,7 @@ class CustomRoundButton extends StatelessWidget {
       {required this.text,
       required this.callback,
       this.width = 220,
-      this.height = 55,
+      this.height = 45,
       Key? key})
       : super(key: key);
 
