@@ -1,0 +1,45 @@
+// https://router.project-osrm.org/route/v1/driving/13.388860,52.517037;13.397634,52.529407?overview=false
+
+// Koordinaten Hochschule Fulda: 9.68669, 50.56597
+
+{
+  "code": "Ok",
+  "routes": [
+    {
+      "legs": [
+        {
+          "steps": [
+          ],
+          "summary": "",
+          "weight": 262.8,
+          "duration": 260,
+          "distance": 1887
+        }
+      ],
+      "weight_name": "routability",
+      "weight": 262.8,
+      "duration": 260,
+      "distance": 1887
+    }
+  ],
+  "waypoints": [
+    {
+      "hint": "hf8JgASUmYUXAAAABQAAAAAAAAAgAAAAIXRPQYXNK0AAAAAAcPePQQsAAAADAAAAAAAAABAAAACG9QAA_kvMAKlYIQM8TMwArVghAwAA7wqVo0Qp",
+      "distance": 4.231521214,
+      "name": "Friedrichstraße",
+      "location": [
+        13.388798,
+        52.517033
+      ]
+    },
+    {
+      "hint": "chHdgQ0aiYcGAAAACgAAAAAAAAB3AAAAppONQOodwkAAAAAA8TeEQgYAAAAKAAAAAAAAAHcAAACG9QAAfm7MABiJIQOCbswA_4ghAwAAXwWVo0Qp",
+      "distance": 2.795148358,
+      "name": "Torstraße",
+      "location": [
+        13.39763,
+        52.529432
+      ]
+    }
+  ]
+}
