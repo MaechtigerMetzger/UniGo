@@ -27,8 +27,8 @@ class Osrm {
 
   Osrm.empty({
     this.code = "",
-    this.routes = const[],
-    this.waypoints = const[],
+    this.routes = const [],
+    this.waypoints = const [],
   });
 
   void printRoutes() {
@@ -45,12 +45,15 @@ class Osrm {
     }
   }
 
-  factory Osrm.fromJson(Map<String, dynamic> json) => Osrm(
-        code: json["code"],
-        routes: List<Route>.from(json["routes"].map((x) => Route.fromJson(x))),
-        waypoints: List<Waypoint>.from(
-            json["waypoints"].map((x) => Waypoint.fromJson(x))),
-      );
+  factory Osrm.fromJson(Map<String, dynamic> json) {
+    print("Osrm");
+    return Osrm(
+      code: json["code"],
+      routes: List<Route>.from(json["routes"].map((x) => Route.fromJson(x))),
+      waypoints: List<Waypoint>.from(
+          json["waypoints"].map((x) => Waypoint.fromJson(x))),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "code": code,
@@ -80,13 +83,16 @@ class Route {
     }
   }
 
-  factory Route.fromJson(Map<String, dynamic> json) => Route(
-        legs: List<Leg>.from(json["legs"].map((x) => Leg.fromJson(x))),
-        weightName: json["weight_name"],
-        weight: json["weight"]?.toDouble(),
-        duration: json["duration"]?.toDouble(),
-        distance: json["distance"]?.toDouble(),
-      );
+  factory Route.fromJson(Map<String, dynamic> json) {
+    print("Route");
+    return Route(
+      legs: List<Leg>.from(json["legs"].map((x) => Leg.fromJson(x))),
+      weightName: json["weight_name"],
+      weight: json["weight"]?.toDouble(),
+      duration: json["duration"]?.toDouble(),
+      distance: json["distance"]?.toDouble(),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "legs": List<dynamic>.from(legs.map((x) => x.toJson())),
@@ -118,13 +124,16 @@ class Leg {
     }
   }
 
-  factory Leg.fromJson(Map<String, dynamic> json) => Leg(
-        steps: List<Schritt>.from(json["steps"].map((x) => Schritt.fromJson(x))),
-        summary: json["summary"],
-        weight: json["weight"]?.toDouble(),
-        duration: json["duration"]?.toDouble(),
-        distance: json["distance"]?.toDouble(),
-      );
+  factory Leg.fromJson(Map<String, dynamic> json) {
+    print("Leg");
+    return Leg(
+      steps: List<Schritt>.from(json["steps"].map((x) => Schritt.fromJson(x))),
+      summary: json["summary"],
+      weight: json["weight"]?.toDouble(),
+      duration: json["duration"]?.toDouble(),
+      distance: json["distance"]?.toDouble(),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "steps": List<dynamic>.from(steps.map((x) => x.toJson())),
@@ -163,22 +172,26 @@ class Schritt {
   void printOut() {
     //String geo = utf8.decode(base64Decode(geometry));
 
-    print ("${name}: (${maneuver.type} ${maneuver.modifier}) ${duration}s, ${distance}m");
+    print(
+        "${name}: (${maneuver.type} ${maneuver.modifier}) ${duration}s, ${distance}m");
   }
 
-  factory Schritt.fromJson(Map<String, dynamic> json) => Schritt(
-        geometry: json["geometry"],
-        maneuver: Maneuver.fromJson(json["maneuver"]),
-        mode: modeValues.map[json["mode"]]!,
-        drivingSide: drivingSideValues.map[json["driving_side"]]!,
-        name: json["name"],
-        intersections: List<Intersection>.from(
-            json["intersections"].map((x) => Intersection.fromJson(x))),
-        weight: json["weight"]?.toDouble(),
-        duration: json["duration"]?.toDouble(),
-        distance: json["distance"]?.toDouble(),
-        ref: json["ref"],
-      );
+  factory Schritt.fromJson(Map<String, dynamic> json) {
+    print("Schritt");
+    return Schritt(
+      geometry: json["geometry"],
+      maneuver: Maneuver.fromJson(json["maneuver"]),
+      mode: modeValues.map[json["mode"]]!,
+      drivingSide: drivingSideValues.map[json["driving_side"]]!,
+      name: json["name"] ?? "leer",
+      intersections: List<Intersection>.from(
+          json["intersections"].map((x) => Intersection.fromJson(x))),
+      weight: json["weight"]?.toDouble(),
+      duration: json["duration"]?.toDouble(),
+      distance: json["distance"]?.toDouble(),
+      ref: json["ref"],
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "geometry": geometry,
@@ -195,12 +208,13 @@ class Schritt {
       };
 }
 
-enum DrivingSide { RIGHT, LEFT, STRAIGHT }
+enum DrivingSide { RIGHT, LEFT, STRAIGHT, UNKNOWN }
 
 final drivingSideValues = EnumValues({
   "left": DrivingSide.LEFT,
   "right": DrivingSide.RIGHT,
-  "straight": DrivingSide.STRAIGHT
+  "straight": DrivingSide.STRAIGHT,
+  "unkown": DrivingSide.UNKNOWN,
 });
 
 class Intersection {
@@ -220,16 +234,19 @@ class Intersection {
   int? intersectionIn;
   List<Lane>? lanes;
 
-  factory Intersection.fromJson(Map<String, dynamic> json) => Intersection(
-        out: json["out"],
-        entry: List<bool>.from(json["entry"].map((x) => x)),
-        bearings: List<int>.from(json["bearings"].map((x) => x)),
-        location: List<double>.from(json["location"].map((x) => x?.toDouble())),
-        intersectionIn: json["in"],
-        lanes: json["lanes"] == null
-            ? []
-            : List<Lane>.from(json["lanes"]!.map((x) => Lane.fromJson(x))),
-      );
+  factory Intersection.fromJson(Map<String, dynamic> json) {
+    print("Intersection");
+    return Intersection(
+      out: json["out"],
+      entry: List<bool>.from(json["entry"].map((x) => x)),
+      bearings: List<int>.from(json["bearings"].map((x) => x)),
+      location: List<double>.from(json["location"].map((x) => x?.toDouble())),
+      intersectionIn: json["in"],
+      lanes: json["lanes"] == null
+          ? []
+          : List<Lane>.from(json["lanes"]!.map((x) => Lane.fromJson(x))),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "out": out,
@@ -252,10 +269,13 @@ class Lane {
   bool valid;
   List<String> indications;
 
-  factory Lane.fromJson(Map<String, dynamic> json) => Lane(
-        valid: json["valid"],
-        indications: List<String>.from(json["indications"].map((x) => x)),
-      );
+  factory Lane.fromJson(Map<String, dynamic> json) {
+    print("Lane");
+    return Lane(
+      valid: json["valid"],
+      indications: List<String>.from(json["indications"].map((x) => x)),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "valid": valid,
@@ -275,16 +295,21 @@ class Maneuver {
   int bearingAfter;
   int bearingBefore;
   List<double> location;
-  DrivingSide modifier;
+  String modifier;
   String type;
 
-  factory Maneuver.fromJson(Map<String, dynamic> json) => Maneuver(
-        bearingAfter: json["bearing_after"],
-        bearingBefore: json["bearing_before"],
-        location: List<double>.from(json["location"].map((x) => x?.toDouble())),
-        modifier: drivingSideValues.map[json["modifier"]]!,
-        type: json["type"],
-      );
+  factory Maneuver.fromJson(Map<String, dynamic> json) {
+    print("Maneuver");
+    json["location"].map((x) => print(x));
+
+    return Maneuver(
+      bearingAfter: json["bearing_after"],
+      bearingBefore: json["bearing_before"],
+      location: List<double>.from(json["location"].map((x) => x?.toDouble())),
+      modifier: json["modifier"] ?? "unknown",
+      type: json["type"],
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "bearing_after": bearingAfter,
@@ -312,12 +337,15 @@ class Waypoint {
   String name;
   List<double> location;
 
-  factory Waypoint.fromJson(Map<String, dynamic> json) => Waypoint(
-        hint: json["hint"],
-        distance: json["distance"]?.toDouble(),
-        name: json["name"],
-        location: List<double>.from(json["location"].map((x) => x?.toDouble())),
-      );
+  factory Waypoint.fromJson(Map<String, dynamic> json) {
+    print("Waypoint");
+    return Waypoint(
+      hint: json["hint"],
+      distance: json["distance"]?.toDouble(),
+      name: json["name"] ?? "leer",
+      location: List<double>.from(json["location"].map((x) => x?.toDouble())),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "hint": hint,

@@ -1,4 +1,4 @@
-import 'dart:convert' show utf8;
+import 'dart:convert' show json, utf8;
 import 'package:http/http.dart' as http;
 
 import 'osrm.dart';
@@ -25,17 +25,15 @@ class OSRMServiceProvider {
     String resourcePath = "driving",
     required Function(String) objectFromJson,
   }) async {
-    print ('${apiPath}/${resourcePath}/${coordString}');
     var url = Uri.http(
         host, '${apiPath}/${resourcePath}/${coordString}', queryParameters);
-    print (url);
+    print(url);
 
     var response = await http.get(url);
     String resUTF8 = utf8.decode(response.bodyBytes);
-    print(response.statusCode);
-
     if (response.statusCode == 200) {
       Osrm data = objectFromJson(resUTF8);
+      data.printRoutes();
       return (data);
     } else {
       return Osrm.empty();
