@@ -31,6 +31,20 @@ class Osrm {
     this.waypoints = const[],
   });
 
+  void printRoutes() {
+    for (Route r in routes) {
+      r.printOut();
+    }
+  }
+
+  List<Schritt> getSteps() {
+    if (routes.isNotEmpty) {
+      return routes[0].legs[0].steps;
+    } else {
+      return [];
+    }
+  }
+
   factory Osrm.fromJson(Map<String, dynamic> json) => Osrm(
         code: json["code"],
         routes: List<Route>.from(json["routes"].map((x) => Route.fromJson(x))),
@@ -60,6 +74,12 @@ class Route {
   double duration;
   double distance;
 
+  void printOut() {
+    for (Leg l in legs) {
+      l.printOut();
+    }
+  }
+
   factory Route.fromJson(Map<String, dynamic> json) => Route(
         legs: List<Leg>.from(json["legs"].map((x) => Leg.fromJson(x))),
         weightName: json["weight_name"],
@@ -86,14 +106,20 @@ class Leg {
     required this.distance,
   });
 
-  List<Step> steps;
+  List<Schritt> steps;
   String summary;
   double weight;
   double duration;
   double distance;
 
+  void printOut() {
+    for (Schritt s in steps) {
+      s.printOut();
+    }
+  }
+
   factory Leg.fromJson(Map<String, dynamic> json) => Leg(
-        steps: List<Step>.from(json["steps"].map((x) => Step.fromJson(x))),
+        steps: List<Schritt>.from(json["steps"].map((x) => Schritt.fromJson(x))),
         summary: json["summary"],
         weight: json["weight"]?.toDouble(),
         duration: json["duration"]?.toDouble(),
@@ -109,8 +135,8 @@ class Leg {
       };
 }
 
-class Step {
-  Step({
+class Schritt {
+  Schritt({
     required this.geometry,
     required this.maneuver,
     required this.mode,
@@ -134,7 +160,13 @@ class Step {
   double distance;
   String? ref;
 
-  factory Step.fromJson(Map<String, dynamic> json) => Step(
+  void printOut() {
+    //String geo = utf8.decode(base64Decode(geometry));
+
+    print ("${name}: (${maneuver.type} ${maneuver.modifier}) ${duration}s, ${distance}m");
+  }
+
+  factory Schritt.fromJson(Map<String, dynamic> json) => Schritt(
         geometry: json["geometry"],
         maneuver: Maneuver.fromJson(json["maneuver"]),
         mode: modeValues.map[json["mode"]]!,
