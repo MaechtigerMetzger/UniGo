@@ -43,6 +43,7 @@ dependencies:
   form_builder_validators: ^8.4.0
   shared_preferences: ^2.0.17
   flutter_map: ^3.1.0
+  string_similarity: ^2.0.0
 
 dev_dependencies:
   flutter_test:

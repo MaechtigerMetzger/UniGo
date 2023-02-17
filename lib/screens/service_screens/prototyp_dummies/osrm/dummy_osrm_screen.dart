@@ -3,11 +3,13 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:unigo_prototyp/screens/service_screens/prototyp_dummies/widgets/dummy_circular_icon_button_widget.dart';
-import 'package:unigo_prototyp/services/osrm/model/osrm_service_provider.dart';
+import 'package:unigo_prototyp/services/osrm/model/helper_generate_step_description.dart';
+import 'package:unigo_prototyp/services/osrm/model/nominatim_cache.dart';
 import 'package:unigo_prototyp/services/unigo_service.dart';
 
 import '../../../../services/controller/ug_state_controller.dart';
 import '../../../../services/osrm/model/osrm.dart' as osrm;
+import '../../../../services/osrm/model/osrm_service_provider.dart';
 import '../maps/nominatim.dart';
 import '../maps/remote_services.dart';
 
@@ -24,9 +26,12 @@ class _OsrmListScreenState extends State<OsrmListScreen> {
   UniGoService service = UniGoService();
   osrm.Osrm osrmRoute = osrm.Osrm.empty();
   String search = "9.41188,50.63475;9.68522,50.56611";
+  HelperGenerateStepDescription _generate = HelperGenerateStepDescription();
+  NominatimCache cache = NominatimCache();
 
   // Load to-do list from the server
   Future<bool> _loadOsrm() async {
+    print(search);
     osrmRoute = await OSRMServiceProvider.getRoute(
       coordString: search,
       objectFromJson: osrm.osrmFromJson,
@@ -109,9 +114,15 @@ class _OsrmListScreenState extends State<OsrmListScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Align(
                 alignment: Alignment.topCenter,
+                child: Text(_generate.generate(step)),
+                /*
                 child: Text("${step.maneuver.type} ${step.maneuver.modifier} into ${step.name}${step.destinations}: "
                     "${step.maneuver.location[0]},${step.maneuver.location[1]} "
-                    "${step.duration}s, ${step.distance}m"),
+                    "${step.duration}s, ${step.distance}m"
+                    "\n"
+                    "Im Kreisverkehr nehmen Sie die Ausfahrt ${step.maneuver.exit}."),
+
+                 */
               ),
             ),
           ),
@@ -153,8 +164,8 @@ class _OsrmListScreenState extends State<OsrmListScreen> {
                 String start = _formKey.currentState!.value['start'];
                 String ziel = _formKey.currentState!.value['ziel'];
 
-                String startCoords = await _getCoordString(start);
-                String zielCoords = await _getCoordString(ziel);
+                String? startCoords = await _getCoordString(start);
+                String? zielCoords = await _getCoordString(ziel);
 
                 search = "${startCoords};${zielCoords}";
                 print(search);
@@ -169,10 +180,20 @@ class _OsrmListScreenState extends State<OsrmListScreen> {
     );
   }
 
-  Future<String> _getCoordString(String start) async {
+  Future<String?> _getCoordString(String sterm) async {
     double lat = 0;
     double lng = 0;
-    List<Nominatim> liste = await RemoteServices.fetchCoordinates(start);
+
+    sterm = sterm.toLowerCase().trim();
+    sterm = sterm.replaceAll(",", " ");
+    sterm = sterm.replaceAll(RegExp(r"\s+"), " ");
+
+    String? similar = cache.getSimilar(sterm);
+    if (similar != "") {
+      return cache.lookup[similar];
+    }
+
+    List<Nominatim> liste = await RemoteServices.fetchCoordinates(sterm);
     if (liste.isNotEmpty) {
       print(liste[0].lat);
       print(liste[0].lon);
