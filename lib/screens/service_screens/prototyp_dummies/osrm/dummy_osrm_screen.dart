@@ -7,7 +7,7 @@ import 'package:unigo_prototyp/services/osrm/model/osrm_service_provider.dart';
 import 'package:unigo_prototyp/services/unigo_service.dart';
 
 import '../../../../services/controller/ug_state_controller.dart';
-import '../../../../services/osrm/model/osrm.dart';
+import '../../../../services/osrm/model/osrm.dart' as osrm;
 import '../maps/nominatim.dart';
 import '../maps/remote_services.dart';
 
@@ -22,14 +22,14 @@ class _OsrmListScreenState extends State<OsrmListScreen> {
   final _formKey = GlobalKey<FormBuilderState>();
   UGStateController _controller = Get.find();
   UniGoService service = UniGoService();
-  Osrm osrmRoute = Osrm.empty();
+  osrm.Osrm osrmRoute = osrm.Osrm.empty();
   String search = "9.41188,50.63475;9.68522,50.56611";
 
   // Load to-do list from the server
   Future<bool> _loadOsrm() async {
     osrmRoute = await OSRMServiceProvider.getRoute(
       coordString: search,
-      objectFromJson: osrmFromJson,
+      objectFromJson: osrm.osrmFromJson,
     );
 
     return true;
@@ -77,7 +77,7 @@ class _OsrmListScreenState extends State<OsrmListScreen> {
   }
 
   Widget _buildListView(AsyncSnapshot<bool> snapshot) {
-    List<Schritt> steps = osrmRoute.getSteps();
+    List<osrm.Step> steps = osrmRoute.getSteps();
     return Expanded(
       child: RefreshIndicator(
         onRefresh: () async {
@@ -94,7 +94,7 @@ class _OsrmListScreenState extends State<OsrmListScreen> {
     );
   }
 
-  Widget _buildCard(Schritt step) {
+  Widget _buildCard(osrm.Step step) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 16),
       child: Stack(
@@ -109,8 +109,8 @@ class _OsrmListScreenState extends State<OsrmListScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Align(
                 alignment: Alignment.topCenter,
-                child: Text("${step.name}: (${step.maneuver.type} "
-                    "${step.maneuver.modifier}) "
+                child: Text("${step.maneuver.type} ${step.maneuver.modifier} into ${step.name}${step.destinations}: "
+                    "${step.maneuver.location[0]},${step.maneuver.location[1]} "
                     "${step.duration}s, ${step.distance}m"),
               ),
             ),
