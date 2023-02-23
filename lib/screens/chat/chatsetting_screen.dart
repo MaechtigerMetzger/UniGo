@@ -7,18 +7,33 @@ class ChatSettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
 
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Color.fromARGB(255, 255, 255, 255),
+        ),
+        backgroundColor: const Color.fromARGB(255, 77, 103, 111),
+        centerTitle: true,
+        title: const Text(
+          "Profil",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        unselectedIconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        selectedIconTheme: IconThemeData(color: Colors.white60),
         showUnselectedLabels: false,
         showSelectedLabels: false,
-        backgroundColor: Colors.blueGrey,
-        items: [
+        backgroundColor: const Color.fromARGB(255, 77, 103, 111),
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.car_rental),
+            icon: Icon(Icons.directions_car),
             label: "",
           ),
           BottomNavigationBarItem(
@@ -31,6 +46,7 @@ class ChatSettingScreen extends StatelessWidget {
           ),
         ],
       ),
+      backgroundColor: Colors.white,
 
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
