@@ -67,7 +67,7 @@ class _FahrtSuchen extends State<FahrtSuchen> {
               //Button für Vorgefertigte Ort, Datum, Zeit
               _buildDefaultValue(),
               //Button zum Senden
-              _buildSende(),
+              _buildSende(context, "Suche", FahrtUebersicht()),
             ],
           ),
         ),
@@ -75,41 +75,22 @@ class _FahrtSuchen extends State<FahrtSuchen> {
     );
   }
 
-  ElevatedButton _buildRouteButton(
-      BuildContext context, String text, Widget widget) {
+//Button zum Suchen
+  ElevatedButton _buildSende(BuildContext context, String text, Widget widget) {
     return ElevatedButton(
       onPressed: () {
+        //Navigator.pop(context);
         Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => widget,
             ));
       },
-      child: Text(text),
-    );
-  }
+        style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.only(
+                top: 15, bottom: 15, right: 20, left: 20)),
 
-//Button zum Suchen
-  Container _buildSende() {
-    return Container(
-      width: 250,
-      height: 50,
-      margin: const EdgeInsets.all(10.0),
-      child: ElevatedButton(
-        child: const Text('Suchen', style: TextStyle(fontSize: 20)),
-        onPressed: () {
-          //Navigator.pop(context); Context funktioniert nicht?!
-        },
-        style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all(Colors.white),
-          backgroundColor: MaterialStateProperty.all(Colors.teal),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: BorderSide(color: Colors.teal),
-          )),
-        ),
-      ),
+      child: Text(text),
     );
   }
 
@@ -173,7 +154,7 @@ class _FahrtSuchen extends State<FahrtSuchen> {
         child: OpenStreetMapSearchAndPick(
             center: LatLong(50, 9),
             buttonColor: Colors.blue,
-            buttonText: 'Set Current Location',
+            buttonText: 'Aktuelle Position',
             onPicked: (pickedData) {
               setState(() {
                 address = pickedData.address;

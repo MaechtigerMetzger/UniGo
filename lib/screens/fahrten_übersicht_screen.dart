@@ -111,7 +111,7 @@ class FahrtUebersicht extends StatelessWidget {
                 Container(
                   child: Padding(
                     padding: const EdgeInsets.only(left: 200),
-                    child: Text('10.45 Uhr'),
+                    child: Text('09.45 Uhr'),
                   ),
                 ),
                 Container(
@@ -165,7 +165,7 @@ InkWell _buildFahrt1() {
               Container(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 200),
-                  child: Text('10.45 Uhr'),
+                  child: Text('10.15 Uhr'),
                 ),
               ),
               Container(
@@ -218,7 +218,7 @@ InkWell _buildFahrt2() {
               Container(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 200),
-                  child: Text('10.45 Uhr'),
+                  child: Text('11.30 Uhr'),
                 ),
               ),
               Container(
@@ -271,7 +271,7 @@ InkWell _buildFahrt3() {
               Container(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 200),
-                  child: Text('10.45 Uhr'),
+                  child: Text('12.45 Uhr'),
                 ),
               ),
               Container(
@@ -324,7 +324,7 @@ InkWell _buildFahrt4() {
               Container(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 200),
-                  child: Text('10.45 Uhr'),
+                  child: Text('13.00 Uhr'),
                 ),
               ),
               Container(
@@ -377,7 +377,7 @@ InkWell _buildFahrt5() {
               Container(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 200),
-                  child: Text('10.45 Uhr'),
+                  child: Text('14.20 Uhr'),
                 ),
               ),
               Container(
