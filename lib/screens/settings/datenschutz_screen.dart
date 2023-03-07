@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../navigation.dart';
+import '../auswahl_screen.dart';
+import '../chat/chat_screen.dart';
+import '../co2_screen.dart';
+import '../settings_screen.dart';
+import 'cookies_screen.dart';
+
 class DatenschutzScreen extends StatefulWidget {
   @override
   DatenschutzzScreen createState() => DatenschutzzScreen();
@@ -11,38 +18,16 @@ class DatenschutzzScreen extends State<DatenschutzScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        showUnselectedLabels: false,
-        showSelectedLabels: false,
-        backgroundColor: Colors.blueGrey,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.car_rental),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: "",
-          ),
-        ],
-      ),
-
       appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.black,
+        iconTheme: const IconThemeData(
+          color: Color.fromARGB(255, 255, 255, 255),
         ),
-        title: const Text('Datenschutz', style: TextStyle(color: Colors.black, fontSize: 24),
+        backgroundColor: const Color.fromARGB(255, 77, 103, 111),
+        centerTitle: true,
+        title: const Text(
+          "Datenschutz",
+          style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.white,
       ),
 
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
@@ -186,21 +171,23 @@ class DatenschutzzScreen extends State<DatenschutzScreen> {
           // Cookies
           Container(
             width: 290,
-            height: 40,
+            height: 50,
             //color: Colors.red,
             child: Column(
               children: [
                 Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: Icon(
-                        Icons.cookie_outlined,
-                        size: 40,
-                        color: Colors.black,
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => CookiesScreen()));
+                      },
+                      icon: Icon(Icons.cookie_outlined, size: 40, color: Colors.black,),
+                      label: Text("Cookies", style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.normal)),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                        padding: const EdgeInsets.only(right: 10),
                       ),
-                    ),
-                    Text("Cookies", style: TextStyle(fontSize: 18,),
                     ),
                   ],
                 ),
@@ -210,6 +197,54 @@ class DatenschutzzScreen extends State<DatenschutzScreen> {
 
         ],
       ),
+      //bottomNavigationBar: Navigation(),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.only(left: 30, top: 0, right: 30, bottom: 0),
+        height: 60,
+        color: Colors.blueGrey,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              icon: Icon(Icons.home, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CO2Screen()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.directions_car, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => AuswahlScreen()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.chat, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ChatScreen()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.settings, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => SettingsScreen()));
+              },
+            ),
+          ],
+        ),
+      ),
+
+
+
+
+
+
+
+
+
     );
   }
 }

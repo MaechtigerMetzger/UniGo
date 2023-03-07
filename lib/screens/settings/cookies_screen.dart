@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../navigation.dart';
+import '../auswahl_screen.dart';
+import '../chat/chat_screen.dart';
+import '../co2_screen.dart';
+import '../settings_screen.dart';
+
 class CookiesScreen extends StatefulWidget {
   @override
   CookieScreen createState() => CookieScreen();
@@ -14,38 +20,56 @@ class CookieScreen extends State<CookiesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        showUnselectedLabels: false,
-        showSelectedLabels: false,
-        backgroundColor: Colors.blueGrey,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.car_rental),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: "",
-          ),
-        ],
+
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.only(left: 30, top: 0, right: 30, bottom: 0),
+        height: 60,
+        color: Colors.blueGrey,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              icon: Icon(Icons.home, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CO2Screen()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.directions_car, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => AuswahlScreen()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.chat, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ChatScreen()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.settings, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => SettingsScreen()));
+              },
+            ),
+          ],
+        ),
       ),
 
       appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.black,
+        iconTheme: const IconThemeData(
+          color: Color.fromARGB(255, 255, 255, 255),
         ),
-        title: const Text('Cookies', style: TextStyle(color: Colors.black, fontSize: 24),
+        backgroundColor: const Color.fromARGB(255, 77, 103, 111),
+        centerTitle: true,
+        title: const Text(
+          "Cookies",
+          style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.white,
       ),
 
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
