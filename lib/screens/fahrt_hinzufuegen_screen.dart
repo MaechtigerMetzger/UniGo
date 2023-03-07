@@ -4,6 +4,8 @@ import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
 
+import 'dialog_test_screen.dart';
+
 class FahrtHinzufuegenScreenI extends StatelessWidget {
   const FahrtHinzufuegenScreenI({Key? key}) : super(key: key);
 
@@ -54,7 +56,7 @@ class FahrtHinzufuegenScreenI extends StatelessWidget {
             //Button für Vorgefertigte Ort, Datum, Zeit
             _buildDefaultValue(),
             //Button zum Senden
-            _buildSende(),
+            _buildFreigabe(context, "Suche", DialogTestScreen()),
           ],
         ),
       ),
@@ -259,24 +261,21 @@ class FahrtHinzufuegenScreenI extends StatelessWidget {
   }
 
 //Button zum Senden der Daten
-  Container _buildSende() {
-    return Container(
-      width: 250,
-      height: 50,
-      margin: const EdgeInsets.all(10.0),
-      child: TextButton(
-        onPressed: () {},
-        style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all(Colors.white),
-          backgroundColor: MaterialStateProperty.all(Colors.teal),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: BorderSide(color: Colors.teal),
-          )),
-        ),
-        child: Text('Freigeben', style: TextStyle(fontSize: 20)),
-      ),
+  ElevatedButton _buildFreigabe(BuildContext context, String text, Widget widget) {
+    return ElevatedButton(
+      onPressed: () {
+        //Navigator.pop(context);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => widget,
+            ));
+      },
+      style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.only(
+              top: 15, bottom: 15, right: 20, left: 20)),
+
+      child: Text(text),
     );
   }
 

@@ -16,14 +16,12 @@ import 'package:unigo_prototyp/screens/service_screens/prototyp_dummies/maps/map
 import 'package:unigo_prototyp/screens/settings/authentifizierung_screen.dart';
 import 'package:unigo_prototyp/screens/settings/cookies_screen.dart';
 import 'package:unigo_prototyp/screens/settings/datenschutz_screen.dart';
-import 'package:unigo_prototyp/screens/standort/standortone_screen.dart';
-import 'package:unigo_prototyp/screens/standort/standortthree.dart';
-import 'package:unigo_prototyp/screens/standort/standorttwo_screen.dart';
 import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
-
+import 'co2_screen.dart';
 import 'fahrt_hinzufuegen_screen.dart';
 import 'fahrt_suche_screen.dart';
 import 'fahrten_übersicht_screen.dart';
+import 'settings_screen.dart';
 
 class AuswahlScreen extends StatelessWidget {
   AuswahlScreen({Key? key}) : super(key: key);
@@ -80,13 +78,8 @@ class AuswahlScreen extends StatelessWidget {
             _buildRouteButton(context, "Datenschutz", DatenschutzScreen()),
             _spacer(),
             _buildRouteButton(context, "Punkte", PunkteScreen()),
-
             _spacer(),
-            _buildRouteButton(context, "Standort1", StandortoneScreen()),
-            _spacer(),
-            _buildRouteButton(context, "Standort2", StandorttwoScreen()),
-            _spacer(),
-            _buildRouteButton(context, "Standort3", StandortthreeScreen()),
+            _buildRouteButton(context, "DialogTest Screen", DialogTestScreen()),
           ],
         ),
       ),

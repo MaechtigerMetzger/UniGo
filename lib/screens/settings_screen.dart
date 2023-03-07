@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'benachrichtigung_screen.dart';
+
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
@@ -108,7 +110,12 @@ class SettingsScreen extends StatelessWidget {
                     leading: Icon(Icons.notifications),
                     title: Text("Benachrichtigungen"),
                     onTap: () {
-                      // Perform the desired action when the option is tapped
+                      //Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BenachrichtigungScreen(),
+                          ));
                     },
                   ),
                 ),
