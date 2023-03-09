@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'login_screen.dart';
+import './settings/datenschutz_screen.dart';
+import 'standort/standortone_screen.dart';
+import 'benachrichtigung_screen.dart';
+import 'chat/chat_screen.dart';
+import 'co2_screen.dart';
+import 'Divers/faq_screen.dart';
+import 'auswahl_screen.dart';
 
 import 'benachrichtigung_screen.dart';
 
@@ -12,37 +20,53 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back,color: Colors.black),
+          icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             // Perform the desired action when the arrow is pressed
           },
         ),
-        title: Text("Einstellungen",style: TextStyle(color:Colors.black)),
+        title: Text("Einstellungen", style: TextStyle(color: Colors.black)),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        showUnselectedLabels: false,
-        showSelectedLabels: false,
-        backgroundColor: Colors.blueGrey,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.car_rental),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: "",
-          ),
-        ],
+      //bottomNavigationBar: Navigation(),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.only(left: 30, top: 0, right: 30, bottom: 0),
+        height: 60,
+        color: Colors.blueGrey,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              icon: Icon(Icons.home, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => CO2Screen()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.directions_car, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => AuswahlScreen()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.chat, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ChatScreen()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.settings, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => SettingsScreen()));
+              },
+            ),
+          ],
+        ),
       ),
+
       backgroundColor: Color.fromARGB(255, 219, 237, 236),
       body: Column(
         children: [
@@ -56,12 +80,11 @@ class SettingsScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Row(
                 children: [
-                    Icon(
-                      Icons.account_circle_rounded,
-                      size: 90,
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-
+                  Icon(
+                    Icons.account_circle_rounded,
+                    size: 90,
+                    color: Color.fromARGB(255, 255, 255, 255),
+                  ),
                   SizedBox(width: 30),
                   Text(
                     "Max Mustermann",
@@ -83,7 +106,6 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
           ),
-
           Expanded(
             child: ListView(
               children: [
@@ -92,6 +114,10 @@ class SettingsScreen extends StatelessWidget {
                     leading: Icon(Icons.security),
                     title: Text("Datenschutz"),
                     onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DatenschutzScreen()));
                       // Perform the desired action when the option is tapped
                     },
                   ),
@@ -101,6 +127,10 @@ class SettingsScreen extends StatelessWidget {
                     leading: Icon(Icons.location_on),
                     title: Text("Standort"),
                     onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => StandortoneScreen()));
                       // Perform the desired action when the option is tapped
                     },
                   ),
@@ -110,6 +140,11 @@ class SettingsScreen extends StatelessWidget {
                     leading: Icon(Icons.notifications),
                     title: Text("Benachrichtigungen"),
                     onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => BenachrichtigungScreen()));
+                      // Perform the desired action when the option is tapped
                       //Navigator.pop(context);
                       Navigator.push(
                           context,
@@ -124,6 +159,10 @@ class SettingsScreen extends StatelessWidget {
                     leading: Icon(Icons.chat),
                     title: Text("Chats"),
                     onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ChatScreen()));
                       // Perform the desired action when the option is tapped
                     },
                   ),
@@ -142,46 +181,43 @@ class SettingsScreen extends StatelessWidget {
                     leading: Icon(Icons.help),
                     title: Text("FAQ"),
                     onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => FaqScreen()));
                     },
                   ),
                 )
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.pop<int>(context, 1);
-            },
-            child: Container(
-              width: 122,
-              height: 31,
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 26, 110, 106),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                  child: Text(
-                    "Abmelden",
-                    style: GoogleFonts.inter(
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
-                  )),
+          _buildRouteButton(context, 'Abmelden', LoginScreen()),
+          _spacer(),
+          Text(
+            "Account löschen",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.red,
             ),
           ),
           _spacer(),
-    Text(
-    "Account löschen",
-    style: TextStyle(
-    fontWeight: FontWeight.bold,
-      color: Colors.red,
-    ),
-    ),
-        _spacer(),
         ],
       ),
     );
   }
 }
 
-SizedBox _spacer() => SizedBox(height:10);
+SizedBox _spacer() => SizedBox(height: 10);
+
+ElevatedButton _buildRouteButton(
+    BuildContext context, String text, Widget widget) {
+  return ElevatedButton(
+    onPressed: () {
+      //Navigator.pop(context);
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => widget,
+          ));
+    },
+    child: Text(text),
+  );
+}

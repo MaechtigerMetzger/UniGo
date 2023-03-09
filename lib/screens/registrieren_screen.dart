@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../widgets/svg_scaffold_widget.dart';
-import 'home_screen.dart';
+import 'home_screen_main.dart';
 
 class RegistrierenScreen extends StatelessWidget {
   const RegistrierenScreen({Key? key}) : super(key: key);
@@ -175,8 +175,7 @@ class RegistrierenScreen extends StatelessWidget {
         child: SvgPicture.asset(
           "assets/RZ_Logo_UniGo.svg",
           fit: BoxFit.fitWidth,
-        )
-        ,
+        ),
       ),
     );
   }

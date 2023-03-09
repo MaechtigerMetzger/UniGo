@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:unigo_prototyp/screens/home_screen.dart';
+import 'package:unigo_prototyp/screens/home_screen_main.dart';
 import 'package:unigo_prototyp/screens/registrieren_screen.dart';
 import 'package:unigo_prototyp/widgets/svg_scaffold_widget.dart';
 
@@ -166,8 +166,7 @@ class LoginScreen extends StatelessWidget {
         child: SvgPicture.asset(
           "assets/RZ_Logo_UniGo.svg",
           fit: BoxFit.fitWidth,
-        )
-        ,
+        ),
       ),
     );
   }
