@@ -6,6 +6,7 @@ import 'package:unigo_prototyp/screens/dialog_test_screen.dart';
 import 'package:unigo_prototyp/screens/fahrten/fahrt_hinzufuegen_screen.dart';
 import 'package:unigo_prototyp/screens/home_screen_main.dart';
 import 'package:unigo_prototyp/screens/login_screen.dart';
+import 'package:unigo_prototyp/screens/profil/profileSettings_screen.dart';
 import 'package:unigo_prototyp/screens/profil/profile_screen.dart';
 import 'package:unigo_prototyp/screens/punkte_screen.dart';
 import 'package:unigo_prototyp/screens/registrieren_screen.dart';
@@ -70,6 +71,8 @@ class AuswahlScreen extends StatelessWidget {
                     context, "Fahrt hinzufügen", FahrtHinzufuegenScreen()),
                 _spacer(),
                 _buildRouteButton(context, "Profil", ProfileScreen()),
+                _spacer(),
+                _buildRouteButton(context, "Profil Settings", ProfileSettingsScreen()),
                 _spacer(),
                 _buildRouteButton(
                     context, "Fahrt HinzufügenI", FahrtHinzufuegenScreenI()),

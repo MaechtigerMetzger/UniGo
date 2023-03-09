@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: CO2Screen(),
+      home: AuswahlScreen(),
       //home: DatenschutzScreen(),
       //home: MyStatefulWidget(),
     );
