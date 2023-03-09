@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../auswahl_screen.dart';
+import '../chat/chat_screen.dart';
+import '../co2_screen.dart';
+import '../settings_screen.dart';
+
 
 class EmailScreen extends StatelessWidget {
   const EmailScreen({Key? key}) : super(key: key);
@@ -8,32 +13,56 @@ class EmailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        showUnselectedLabels: false,
-        showSelectedLabels: false,
-        backgroundColor: Colors.blueGrey,
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Color.fromARGB(255, 255, 255, 255),
+        ),
+        backgroundColor: const Color.fromARGB(255, 77, 103, 111),
+        centerTitle: true,
+        title: const Text(
+          "Emails",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
 
-        items: [
 
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/Bachelorprojekt_Icons_negativ_Home.svg', width: 30, color: Color.fromARGB(255, 223, 237, 237),),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/Bachelorprojekt_Icons_negativ_Car.svg', width: 30, color: Color.fromARGB(255, 223, 237, 237),),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/Bachelorprojekt_Icons_negativ_Chat.svg', width: 30, color: Color.fromARGB(255, 223, 237, 237),),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/Bachelorprojekt_Icons_negativ_Settings.svg', width: 30, color: Color.fromARGB(255, 223, 237, 237),),
-            label: "",
-          ),
-
-        ],
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.only(left: 30, top: 0, right: 30, bottom: 0),
+        height: 60,
+        color: Colors.blueGrey,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              icon: Icon(Icons.home, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => CO2Screen()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.directions_car, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => AuswahlScreen()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.chat, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ChatScreen()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.settings, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => SettingsScreen()));
+              },
+            ),
+          ],
+        ),
       ),
       backgroundColor: Color.fromARGB(255, 243, 243, 243),
       body: SingleChildScrollView(

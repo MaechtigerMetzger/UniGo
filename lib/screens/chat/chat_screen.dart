@@ -56,7 +56,7 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: const Color.fromARGB(255, 77, 103, 111),
         centerTitle: true,
         title: const Text(
-          "Profil",
+          "Max Mustermann",
           style: TextStyle(color: Colors.white),
         ),
       ),

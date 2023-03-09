@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:unigo_prototyp/screens/Divers/email_screen.dart';
 import 'package:unigo_prototyp/screens/Divers/faq_buchung_screen.dart';
 import 'package:unigo_prototyp/screens/Divers/faq_screen.dart';
+import 'package:unigo_prototyp/screens/chat/chatmessage.dart';
+import 'package:unigo_prototyp/screens/chat/chatsetting_screen.dart';
 import 'package:unigo_prototyp/screens/dialog_test_screen.dart';
-import 'package:unigo_prototyp/screens/fahrten/fahrt_hinzufuegen_screen.dart';
 import 'package:unigo_prototyp/screens/home_screen_main.dart';
 import 'package:unigo_prototyp/screens/login_screen.dart';
 import 'package:unigo_prototyp/screens/profil/profileSettings_screen.dart';
@@ -62,13 +63,12 @@ class AuswahlScreen extends StatelessWidget {
                 _spacer(),
                 _buildRouteButton(context, "Chat", ChatScreen()),
                 _spacer(),
+                _buildRouteButton(context, "Chat Settings", ChatSettingScreen()),
+                _spacer(),
                 _buildRouteButton(context, "Login Screen", LoginScreen()),
                 _spacer(),
                 _buildRouteButton(
                     context, "Registrieren Screen", RegistrierenScreen()),
-                _spacer(),
-                _buildRouteButton(
-                    context, "Fahrt hinzufügen", FahrtHinzufuegenScreen()),
                 _spacer(),
                 _buildRouteButton(context, "Profil", ProfileScreen()),
                 _spacer(),
