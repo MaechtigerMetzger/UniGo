@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../auswahl_screen.dart';
+import '../chat/chat_screen.dart';
+import '../co2_screen.dart';
+import '../settings_screen.dart';
+
 class StandortoneScreen extends StatefulWidget {
   const StandortoneScreen({Key? key}) : super(key: key);
 
@@ -11,7 +16,55 @@ class _StandortoneScreenState extends State<StandortoneScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: _bottomNavigationBar(),
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Color.fromARGB(255, 255, 255, 255),
+        ),
+        backgroundColor: const Color.fromARGB(255, 77, 103, 111),
+        centerTitle: true,
+        title: const Text(
+          "Datenschutz",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.only(left: 30, top: 0, right: 30, bottom: 0),
+        height: 60,
+        color: Colors.blueGrey,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              icon: Icon(Icons.home, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => CO2Screen()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.directions_car, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => AuswahlScreen()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.chat, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ChatScreen()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.settings, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => SettingsScreen()));
+              },
+            ),
+          ],
+        ),
+      ),
       backgroundColor: Color.fromARGB(255, 219, 237, 236),
       body: SafeArea(
         child: Column(
@@ -28,25 +81,9 @@ class _StandortoneScreenState extends State<StandortoneScreen> {
             SizedBox(
               height: 40,
             ),
-            _buildInput('Adresse 1'),
+            _form(),
             SizedBox(
-              height: 20,
-            ),
-            _buildInput('Musteradresse'),
-            SizedBox(
-              height: 20,
-            ),
-            _buildInput('1'),
-            SizedBox(
-              height: 20,
-            ),
-            _buildInput('1234'),
-            SizedBox(
-              height: 20,
-            ),
-            _buildInput('Musterstadt'),
-            SizedBox(
-              height: 30,
+              height: 16,
             ),
             _button(),
             SizedBox(
@@ -62,6 +99,85 @@ class _StandortoneScreenState extends State<StandortoneScreen> {
     );
   }
 
+  Container _form() {
+    return Container(
+            width: 350,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Form(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SizedBox(
+                      height: 5,
+                    ),
+                    TextFormField(
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide(color: Colors.teal),
+                        ),
+                        hintText: 'Musterstraße',
+                        isDense: true, // Added this
+                        contentPadding: EdgeInsets.all(15),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextFormField(
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide(color: Colors.teal),
+                        ),
+                        hintText: 'HausNr.',
+                        isDense: true, // Added this
+                        contentPadding: EdgeInsets.all(15),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextFormField(
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide(color: Colors.teal),
+                        ),
+                        hintText: 'PLZ',
+                        isDense: true, // Added this
+                        contentPadding: EdgeInsets.all(15),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextFormField(
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide(color: Colors.teal),
+                        ),
+                        hintText: 'Musterstadt',
+                        isDense: true, // Added this
+                        contentPadding: EdgeInsets.all(15),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+  }
+
   Container _button() {
     return Container(
             height: 32,
@@ -75,12 +191,8 @@ class _StandortoneScreenState extends State<StandortoneScreen> {
                   offset: Offset(0, 3), // changes position of shadow
                 ),
               ],
-              color: const Color.fromARGB(255, 18, 61, 51),
+              color: const Color.fromARGB(255, 14, 116, 114),
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                color: Colors.black,
-                width: 1,
-              ),
             ),
             child: const Center(
               child: Text(
