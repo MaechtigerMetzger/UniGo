@@ -30,12 +30,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Map<int, Color> color =
+    {
+      50:Color.fromRGBO(14, 116, 114, .1),
+      100:Color.fromRGBO(14, 116, 114, .2),
+      200:Color.fromRGBO(14, 116, 114, .3),
+      300:Color.fromRGBO(14, 116, 114, .4),
+      400:Color.fromRGBO(14, 116, 114, .5),
+      500:Color.fromRGBO(14, 116, 114, .6),
+      600:Color.fromRGBO(14, 116, 114, .7),
+      700:Color.fromRGBO(14, 116, 114, .8),
+      800:Color.fromRGBO(14, 116, 114, .9),
+      900:Color.fromRGBO(14, 116, 114, 1),
+    };
+    MaterialColor colorCustom = MaterialColor(0xFF0E7472, color);
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       scrollBehavior: MyCustomScrollBehavior(),
       title: 'UniGo Preview',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: colorCustom,
       ),
       home: LoginScreen(),
       //home: DatenschutzScreen(),
