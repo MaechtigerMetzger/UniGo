@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:unigo_prototyp/screens/auswahl_screen.dart';
 import 'package:unigo_prototyp/screens/co2_screen.dart';
+import 'package:unigo_prototyp/screens/login_screen.dart';
 import 'package:unigo_prototyp/screens/service_screens/pre_loading_screen.dart';
 import 'package:unigo_prototyp/screens/settings/datenschutz_screen.dart';
 
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AuswahlScreen(),
+      home: LoginScreen(),
       //home: DatenschutzScreen(),
       //home: MyStatefulWidget(),
     );
